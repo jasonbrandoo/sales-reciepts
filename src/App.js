@@ -3,16 +3,19 @@ import Main from './components/Main';
 import Navbar from './components/Navbar';
 import Item from './components/Item';
 import Detail from './components/Detail';
+import { ItemProvider } from './context/ItemContext';
 
 const App = () => {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Navbar />
       <Main>
-        <Item />
-        <Detail />
+        <ItemProvider>
+          <Item />
+          <Detail />
+        </ItemProvider>
       </Main>
-    </>
+    </div>
   );
 };
 

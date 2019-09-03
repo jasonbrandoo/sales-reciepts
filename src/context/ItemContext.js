@@ -1,21 +1,21 @@
 import React, { useReducer } from 'react';
 
 const initialState = {
-  name: null,
-  quantity: null,
-  price: null,
-  total: null,
+  cart: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case 'GET_ITEM':
       return {
         ...state,
-        name: action.payload.name,
-        quantity: action.payload.quantity,
-        price: action.payload.price,
-        total: action.payload.total,
+        cart: [...state.cart, action.payload],
+      };
+    case 'ADD_QTY':
+      console.log(action);
+      return {
+        ...state,
+        cart: [...state.cart],
       };
     default:
       throw new Error();

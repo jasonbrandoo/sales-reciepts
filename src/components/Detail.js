@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { ItemContext } from '../context/ItemContext';
 
 const Detail = () => {
+  const { state, dispatch } = useContext(ItemContext);
+  const [quantity, setQuantity] = useState(1);
+
+  const addQty = price => {
+    setQuantity(number => number + 1);
+    const total = quantity * price;
+    dispatch({ type: 'ADD_QTY', payload: total });
+  };
+
+  const substractQty = () => {
+    setQuantity(number => {
+      if (number === 1) {
+        return 1;
+      }
+      return number - 1;
+    });
+  };
+  console.log(state);
   return (
     <div className="w-auto bg-gray-100 flex-grow-0">
       <table className="m-8">
@@ -13,12 +32,30 @@ const Detail = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Lorem</td>
-            <td>2</td>
-            <td>100</td>
-            <td>100</td>
-          </tr>
+          {state.cart.map(item => (
+            <tr key={item.id}>
+              <td>{item.title}</td>
+              <td className="text-center pr-20">
+                <button
+                  className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
+                  type="button"
+                  onClick={substractQty}
+                >
+                  -
+                </button>
+                {quantity}
+                <button
+                  className="ml-2 bg-blue-500 hover:bg-blue-700 text-white text-center rounded inline-block w-5"
+                  type="button"
+                  onClick={() => addQty(item.price)}
+                >
+                  +
+                </button>
+              </td>
+              <td className="text-center pr-20">{item.price}</td>
+              <td className="text-center pr-20">{item.price}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       {/* <div className="flex m-4 text-white">
