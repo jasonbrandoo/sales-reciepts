@@ -6,25 +6,27 @@ const Detail = () => {
   // const [quantity, setQuantity] = useState(1);
 
   const addQty = item => {
-    // setQuantity(number => {
+    const base = state.stock.find(value => value.id === item.id);
     const multiply = item.quantity + 1;
     const total = {
       ...item,
       quantity: multiply,
-      price: multiply * item.price,
+      price: multiply * base.price,
     };
     dispatch({ type: 'ADD_QTY', payload: total });
     return multiply;
-    // });
   };
 
-  const substractQty = () => {
-    // setQuantity(number => {
-    //   if (number === 1) {
-    //     return 1;
-    //   }
-    //   return number - 1;
-    // });
+  const subtractQty = item => {
+    const base = state.stock.find(value => value.id === item.id);
+    const minus = item.quantity - 1;
+    const total = {
+      ...item,
+      quantity: minus,
+      price: item.price - base.price,
+    };
+    dispatch({ type: 'SUBTARCT_QTY', payload: total });
+    return minus;
   };
   console.log(state.cart);
   return (
@@ -46,7 +48,7 @@ const Detail = () => {
                 <button
                   className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
                   type="button"
-                  onClick={substractQty}
+                  onClick={() => subtractQty(item)}
                 >
                   -
                 </button>

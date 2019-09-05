@@ -13,14 +13,19 @@ const reducer = (state, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
-    case 'ADD_QTY': {
-      const item = state.cart.find(books => books.id === action.payload.id);
-      console.log(...state.cart);
+    case 'ADD_QTY':
+    case 'SUBTARCT_QTY':
       return {
         ...state,
-        cart: [...state.cart, { ...item, ...action.payload }],
+        cart: state.cart.map(item => {
+          if (item.id === action.payload.id) {
+            return { ...item, ...action.payload };
+          }
+          return {
+            ...item,
+          };
+        }),
       };
-    }
     default:
       throw new Error();
   }
