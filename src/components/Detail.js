@@ -3,23 +3,30 @@ import { ItemContext } from '../context/ItemContext';
 
 const Detail = () => {
   const { state, dispatch } = useContext(ItemContext);
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
 
-  const addQty = price => {
-    setQuantity(number => number + 1);
-    const total = quantity * price;
+  const addQty = item => {
+    // setQuantity(number => {
+    const multiply = item.quantity + 1;
+    const total = {
+      ...item,
+      quantity: multiply,
+      price: multiply * item.price,
+    };
     dispatch({ type: 'ADD_QTY', payload: total });
+    return multiply;
+    // });
   };
 
   const substractQty = () => {
-    setQuantity(number => {
-      if (number === 1) {
-        return 1;
-      }
-      return number - 1;
-    });
+    // setQuantity(number => {
+    //   if (number === 1) {
+    //     return 1;
+    //   }
+    //   return number - 1;
+    // });
   };
-  console.log(state);
+  console.log(state.cart);
   return (
     <div className="w-auto bg-gray-100 flex-grow-0">
       <table className="m-8">
@@ -43,11 +50,11 @@ const Detail = () => {
                 >
                   -
                 </button>
-                {quantity}
+                {item.quantity}
                 <button
                   className="ml-2 bg-blue-500 hover:bg-blue-700 text-white text-center rounded inline-block w-5"
                   type="button"
-                  onClick={() => addQty(item.price)}
+                  onClick={() => addQty(item)}
                 >
                   +
                 </button>

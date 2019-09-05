@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
+import book from '../data/book';
 
 const initialState = {
+  stock: book,
   cart: [],
 };
 
@@ -11,12 +13,14 @@ const reducer = (state, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
-    case 'ADD_QTY':
-      console.log(action);
+    case 'ADD_QTY': {
+      const item = state.cart.find(books => books.id === action.payload.id);
+      console.log(...state.cart);
       return {
         ...state,
-        cart: [...state.cart],
+        cart: [...state.cart, { ...item, ...action.payload }],
       };
+    }
     default:
       throw new Error();
   }
