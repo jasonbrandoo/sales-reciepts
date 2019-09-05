@@ -8,11 +8,18 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'GET_ITEM':
+    case 'GET_ITEM': {
+      const index = state.cart.findIndex(i => i.id === action.payload.id);
+      if (index === -1) {
+        return {
+          ...state,
+          cart: [...state.cart, action.payload],
+        };
+      }
       return {
         ...state,
-        cart: [...state.cart, action.payload],
       };
+    }
     case 'ADD_QTY':
     case 'SUBTARCT_QTY':
       return {

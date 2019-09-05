@@ -1,9 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../context/ItemContext';
 
 const Detail = () => {
   const { state, dispatch } = useContext(ItemContext);
-  // const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const item = state.cart.length;
+    if (item > 0) {
+      const sum = state.cart.reduce((acc, curr) => acc + curr.price, 0);
+      setTotalPrice(sum);
+    }
+  }, [state.cart]);
 
   const addQty = item => {
     const base = state.stock.find(value => value.id === item.id);
@@ -18,6 +26,9 @@ const Detail = () => {
   };
 
   const subtractQty = item => {
+    if (item.quantity === 1) {
+      return 1;
+    }
     const base = state.stock.find(value => value.id === item.id);
     const minus = item.quantity - 1;
     const total = {
@@ -28,12 +39,12 @@ const Detail = () => {
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
     return minus;
   };
-  console.log(state.cart);
+  console.log(state.cart, totalPrice);
   return (
-    <div className="w-auto bg-gray-100 flex-grow-0">
-      <table className="m-8">
+    <div className="w-3/5 p-8 bg-gray-100 relative">
+      <table className="table-fixed w-full">
         <thead>
-          <tr className="text-black text-2xl">
+          <tr className="text-gray-900 text-xl">
             <th className="pr-64">Name</th>
             <th className="pr-20">Quantity</th>
             <th className="pr-20">Price</th>
@@ -42,7 +53,7 @@ const Detail = () => {
         </thead>
         <tbody>
           {state.cart.map(item => (
-            <tr key={item.id}>
+            <tr key={item.id} className="text-sm text-gray-800 font-hairline">
               <td>{item.title}</td>
               <td className="text-center pr-20">
                 <button
@@ -67,19 +78,18 @@ const Detail = () => {
           ))}
         </tbody>
       </table>
-      {/* <div className="flex m-4 text-white">
-        <h1 className="mr-64 text-2xl">Name</h1>
-        <h1 className="mr-20 text-2xl">Quantity</h1>
-        <h1 className="mr-20 text-2xl">Price</h1>
-        <h1 className="mr-20 text-2xl">Total</h1>
+      <div className="absolute bottom-0 right-0 mb-16 mr-24 flex flex-col items-center">
+        <div className="p-4 bg-blue-400 rounded text-center">
+          <div className="text-xl font-bold text-gray-100">Total Price</div>
+          <div className="text-xl font-bold text-gray-100">{totalPrice}</div>
+        </div>
+        <button
+          className="p-2 mt-4 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100"
+          type="button"
+        >
+          Checkout
+        </button>
       </div>
-      <hr />
-      <div className="flex m-4 text-white">
-        <h1 className="mr-64 text-2xl">Lorem</h1>
-        <h1 className="mr-20 text-2xl">1</h1>
-        <h1 className="mr-20 text-2xl">100</h1>
-        <h1 className="mr-20 text-2xl">100</h1>
-      </div> */}
     </div>
   );
 };
