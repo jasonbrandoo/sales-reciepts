@@ -7,7 +7,7 @@ import { ItemProvider } from './context/ItemContext';
 
 const App = () => {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Navbar />
       <Main>
         <ItemProvider>

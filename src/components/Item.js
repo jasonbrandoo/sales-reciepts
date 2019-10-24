@@ -10,8 +10,8 @@ const Item = () => {
   };
 
   return (
-    <div className="w-2/5 bg-purple-900">
-      <div className="flex flex-row flex-wrap justify-between m-8">
+    <div className="w-2/5 h-full bg-indigo-600 flex flex-col">
+      <div className="flex flex-row flex-wrap justify-between overflow-y-scroll p-5">
         {books.map(items => (
           <button
             key={items.id}
@@ -22,6 +22,26 @@ const Item = () => {
             {items.title}
           </button>
         ))}
+      </div>
+      <div className="flex justify-around items-center w-full h-24 bg-indigo-900">
+        <button
+          className="w-full h-full hover:bg-gray-100 hover:text-black text-white"
+          type="button"
+        >
+          Books
+        </button>
+        <button
+          className="w-full h-full hover:bg-gray-100 hover:text-black text-white"
+          type="button"
+        >
+          Tools
+        </button>
+        <button
+          className="w-full h-full hover:bg-gray-100 hover:text-black text-white"
+          type="button"
+        >
+          Hardware
+        </button>
       </div>
     </div>
   );

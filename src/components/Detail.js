@@ -41,7 +41,7 @@ const Detail = () => {
   };
   console.log(state.cart, totalPrice);
   return (
-    <div className="w-3/5 p-8 bg-gray-100 relative">
+    <div className="w-3/5 h-full p-8 bg-gray-100 relative">
       <table className="table-fixed w-full">
         <thead>
           <tr className="text-gray-900 text-xl">
