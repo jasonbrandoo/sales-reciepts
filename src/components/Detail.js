@@ -8,72 +8,90 @@ const Detail = () => {
   useEffect(() => {
     const item = state.cart.length;
     if (item > 0) {
-      const sum = state.cart.reduce((acc, curr) => acc + curr.price, 0);
-      setTotalPrice(sum);
+      const sum = state.cart.reduce((acc, curr) => {
+        if (curr.item['total-price'] === undefined) {
+          return acc + curr.item.price;
+        }
+        return acc + curr.item['total-price'];
+      }, 0);
+      setTotalPrice(parseFloat(sum));
     }
   }, [state.cart]);
 
-  const addQty = item => {
-    const base = state.stock.find(value => value.id === item.id);
-    const multiply = item.quantity + 1;
+  const addQty = cart => {
+    const base = state.stock.find(i => i.title === cart.item.title);
+    const multiply = cart.quantity + 1;
     const total = {
-      ...item,
+      ...cart,
+      item: {
+        ...cart.item,
+        'total-price': parseFloat(multiply * base.price),
+      },
       quantity: multiply,
-      price: multiply * base.price,
     };
     dispatch({ type: 'ADD_QTY', payload: total });
     return multiply;
   };
 
-  const subtractQty = item => {
-    if (item.quantity === 1) {
+  const subtractQty = cart => {
+    if (cart.quantity === 1) {
       return 1;
     }
-    const base = state.stock.find(value => value.id === item.id);
-    const minus = item.quantity - 1;
+    const base = state.stock.find(i => i.title === cart.item.title);
+    const minus = cart.quantity - 1;
     const total = {
-      ...item,
+      ...cart,
+      item: {
+        ...cart.item,
+        'total-price': parseFloat(cart.item.price - base.price),
+      },
       quantity: minus,
-      price: item.price - base.price,
     };
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
     return minus;
   };
-  console.log(state.cart, totalPrice);
+
   return (
     <div className="w-3/5 h-full p-8 bg-gray-100 relative">
       <table className="table-fixed w-full">
         <thead>
           <tr className="text-gray-900 text-xl">
             <th className="pr-64">Name</th>
-            <th className="pr-20">Quantity</th>
-            <th className="pr-20">Price</th>
-            <th className="pr-20">Total</th>
+            <th className="">Quantity</th>
+            <th className="">Price</th>
+            <th className="">Total</th>
           </tr>
         </thead>
         <tbody>
-          {state.cart.map(item => (
-            <tr key={item.id} className="text-sm text-gray-800 font-hairline">
-              <td>{item.title}</td>
-              <td className="text-center pr-20">
+          {state.cart.map(data => (
+            <tr
+              key={data.item.title}
+              className="text-sm text-gray-800 font-hairline"
+            >
+              <td>{data.item.title}</td>
+              <td className="text-center">
                 <button
                   className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
                   type="button"
-                  onClick={() => subtractQty(item)}
+                  onClick={() => subtractQty(data)}
                 >
                   -
                 </button>
-                {item.quantity}
+                {data.quantity}
                 <button
                   className="ml-2 bg-blue-500 hover:bg-blue-700 text-white text-center rounded inline-block w-5"
                   type="button"
-                  onClick={() => addQty(item)}
+                  onClick={() => addQty(data)}
                 >
                   +
                 </button>
               </td>
-              <td className="text-center pr-20">{item.price}</td>
-              <td className="text-center pr-20">{item.price}</td>
+              <td className="text-center">{data.item.price}</td>
+              <td className="text-center">
+                {data.item['total-price']
+                  ? data.item['total-price']
+                  : data.item.price}
+              </td>
             </tr>
           ))}
         </tbody>

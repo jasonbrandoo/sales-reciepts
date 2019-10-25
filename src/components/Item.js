@@ -6,7 +6,11 @@ const Item = () => {
   const { dispatch } = useContext(ItemContext);
 
   const handleClick = book => {
-    dispatch({ type: 'GET_ITEM', payload: book });
+    const data = {
+      quantity: 1,
+      item: book,
+    };
+    dispatch({ type: 'GET_ITEM', payload: data });
   };
 
   return (
@@ -14,7 +18,7 @@ const Item = () => {
       <div className="flex flex-row flex-wrap justify-between overflow-y-scroll p-5">
         {books.map(items => (
           <button
-            key={items.id}
+            key={items.title}
             type="button"
             className="pt-12 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs"
             onClick={() => handleClick(items)}
@@ -23,7 +27,7 @@ const Item = () => {
           </button>
         ))}
       </div>
-      <div className="flex justify-around items-center w-full h-24 bg-indigo-900">
+      <div className="flex justify-around items-center w-full p-6 bg-indigo-900">
         <button
           className="w-full h-full hover:bg-gray-100 hover:text-black text-white"
           type="button"
