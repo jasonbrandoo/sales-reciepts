@@ -35,6 +35,11 @@ const reducer = (state, action) => {
           };
         }),
       };
+    case 'CLEAR':
+      return {
+        ...state,
+        cart: [],
+      };
     default:
       throw new Error();
   }

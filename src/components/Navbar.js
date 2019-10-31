@@ -31,8 +31,8 @@ const Navbar = () => {
       <div
         className={
           open
-            ? 'w-full flex-grow lg:flex lg:items-center lg:w-auto hidden'
-            : 'w-full flex-grow lg:flex lg:items-center lg:w-auto block'
+            ? 'w-full flex-grow lg:flex lg:items-center lg:w-auto block'
+            : 'w-full flex-grow lg:flex lg:items-center lg:w-auto hidden'
         }
       >
         <div className="text-sm lg:ml-auto">

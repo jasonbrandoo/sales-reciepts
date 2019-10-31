@@ -3,12 +3,8 @@ import { ItemContext } from '../context/ItemContext';
 
 const Item = () => {
   const { state, dispatch } = useContext(ItemContext);
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(state.stock);
   const [type, setType] = useState([]);
-
-  useEffect(() => {
-    setProduct(state.stock);
-  }, [state.stock]);
 
   useEffect(() => {
     const groupBy = (object, property) => {
@@ -24,12 +20,19 @@ const Item = () => {
         }, {})
       );
     };
-    const group = product && Object.keys(groupBy(product, 'type'));
+    const productType = groupBy(state.stock, 'type');
+    const group = Object.keys(productType);
     setType(group);
-  }, [product]);
+  }, [state.stock]);
 
-  const handleType = () => {};
-  console.log(type);
+  const handleAllType = () => {
+    setProduct(state.stock);
+  };
+
+  const handleType = selectedType => {
+    const filteredProduct = state.stock.filter(i => i.type === selectedType);
+    setProduct(filteredProduct);
+  };
 
   const handleClick = item => {
     const data = {
@@ -41,7 +44,7 @@ const Item = () => {
 
   return (
     <div className="w-2/5 h-full bg-indigo-600 flex flex-col">
-      <div className="flex flex-row flex-wrap justify-between overflow-y-scroll p-5 h-full">
+      <div className="flex flex-row flex-wrap justify-between overflow-y-auto p-5 h-full">
         {product &&
           product.map(items => (
             <button
@@ -54,13 +57,20 @@ const Item = () => {
             </button>
           ))}
       </div>
-      <div className="flex justify-around items-center bg-indigo-900 overflow-x-scroll">
+      <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full">
+        <button
+          className="flex-none hover:bg-gray-100 hover:text-black text-white w-48 h-20 font-semibold"
+          type="button"
+          onClick={handleAllType}
+        >
+          All
+        </button>
         {type &&
           type.map(types => (
             <button
-              className="hover:bg-gray-100 hover:text-black text-white pl-16"
+              className="flex-none hover:bg-gray-100 hover:text-black text-white w-48 h-20 font-semibold"
               type="button"
-              onClick={handleType}
+              onClick={() => handleType(types)}
               key={types}
             >
               {types}

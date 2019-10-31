@@ -1,68 +1,42 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Sales Reciepts
 
-In the project directory, you can run:
+## TODO
 
-### `npm start`
+- [ ] User can see an purchase panel containing buttons for each item containing
+      the item number, description, and unit price, as well as a 'Clear' and a
+      'Checkout' button.
+- [ ] User can click an item button to make a purchase.
+- [ ] User can see an field displaying the total sale amount incremented as
+      items are purchased.
+- [ ] User can see a reciept panel displaying the date and time of the sale,
+      as well as all items selected for purchase. This includes the item number,
+      description, and unit price.
+- [ ] User can click the 'Clear' button to clear all purchases at any time
+      before checking out.
+- [ ] User can click the 'Checkout' button to complete purchase all selected
+      items. The final total purchase amount will be added to the end of the reciept
+      panel and all selected items will be added to the database.
+- [ ] User can see the receipt panel cleared after all items have been added
+      to the database.
+- [ ] User can see a 'Daily Sales' and a 'Clear All' button at the bottom of
+      the app window.
+- [ ] User can click the 'Daily Sales' button to display all items purchased
+      by all customers in the receipt panel along with the total of them all.
+- [ ] User can click the 'Clear All' button to clear the receipt panel and
+      delete the record of all purchases from the database.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Bonus features
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [ ] User can see an thumbnail image of the items on the item buttons.
+- [ ] User can see the 'Clear' button replaced by 'Clear Entry' and 'Cancel
+      All' buttons under the purchase panel
+- [ ] User can click the 'Clear Entry' button to clear the last selected item
+      from the receipt panel. This has the effect of unselecting that item.
+- [ ] User can click the 'Cancel All' button to clear all purchases made
+      before checking out.
+- [ ] User can see an input field in the input panel the user may enter the
+      name of the customer into when a purchase is made. The customer name will be
+      added to all items purchased by that customer in the receipt panel and in the
+      rows added to the database.

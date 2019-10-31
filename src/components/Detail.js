@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../context/ItemContext';
 
@@ -51,6 +52,11 @@ const Detail = () => {
     return minus;
   };
 
+  const handleClear = () => {
+    dispatch({ type: 'CLEAR' });
+    setTotalPrice(0);
+  };
+
   return (
     <div className="w-3/5 h-full p-8 bg-gray-100 relative">
       <table className="table-fixed w-full">
@@ -96,17 +102,25 @@ const Detail = () => {
           ))}
         </tbody>
       </table>
-      <div className="absolute bottom-0 right-0 mb-16 mr-24 flex flex-col items-center">
-        <div className="p-4 bg-blue-400 rounded text-center">
-          <div className="text-xl font-bold text-gray-100">Total Price</div>
-          <div className="text-xl font-bold text-gray-100">{totalPrice}</div>
-        </div>
+      <div className="absolute bottom-0 right-0 mb-12 mr-12 flex">
         <button
-          className="p-2 mt-4 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100"
+          className="p-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100"
           type="button"
         >
           Checkout
         </button>
+        <button
+          className="p-2 ml-2 bg-yellow-400 hover:bg-yellow-600 rounded font-bold text-gray-100"
+          type="button"
+          onClick={handleClear}
+        >
+          Clear
+        </button>
+        <div className="p-2 ml-2 bg-blue-400 rounded text-center">
+          <div className="font-bold text-gray-100">
+            Total <span>{totalPrice}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
