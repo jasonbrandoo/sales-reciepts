@@ -1,20 +1,20 @@
 import React from 'react';
+import { Router } from '@reach/router';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
-import Item from './components/Item';
-import Detail from './components/Detail';
-import { ItemProvider } from './context/ItemContext';
+import Checkout from './components/Checkout';
+import { ItemProvider } from './store/ItemContext';
 
 const App = () => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="flex flex-col h-screen max-h-full overflow-hidden">
       <Navbar />
-      <Main>
-        <ItemProvider>
-          <Item />
-          <Detail />
-        </ItemProvider>
-      </Main>
+      <ItemProvider>
+        <Router className="h-full">
+          <Main path="/" />
+          <Checkout path="checkout" />
+        </Router>
+      </ItemProvider>
     </div>
   );
 };

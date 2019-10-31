@@ -1,10 +1,11 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useContext, useEffect, useState } from 'react';
-import { ItemContext } from '../context/ItemContext';
+import { Link } from '@reach/router';
+import { ItemContext } from '../store/ItemContext';
 
 const Detail = () => {
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const item = state.cart.length;
@@ -16,6 +17,7 @@ const Detail = () => {
         return acc + curr.item['total-price'];
       }, 0);
       setTotalPrice(parseFloat(sum));
+      setProduct(state.cart);
     }
   }, [state.cart]);
 
@@ -58,7 +60,7 @@ const Detail = () => {
   };
 
   return (
-    <div className="w-3/5 h-full p-8 bg-gray-100 relative">
+    <div className="w-2/3 h-full p-8 bg-gray-100 relative">
       <table className="table-fixed w-full">
         <thead>
           <tr className="text-gray-900 text-xl">
@@ -103,12 +105,13 @@ const Detail = () => {
         </tbody>
       </table>
       <div className="absolute bottom-0 right-0 mb-12 mr-12 flex">
-        <button
+        <Link
+          to="/checkout"
+          state={{ totalPrice }}
           className="p-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100"
-          type="button"
         >
           Checkout
-        </button>
+        </Link>
         <button
           className="p-2 ml-2 bg-yellow-400 hover:bg-yellow-600 rounded font-bold text-gray-100"
           type="button"

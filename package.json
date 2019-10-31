@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "autoprefixer": "^9.6.1",
     "postcss-cli": "^6.1.3",
     "react": "^16.9.0",
@@ -11,6 +12,8 @@
     "tailwindcss": "^1.1.2"
   },
   "scripts": {
+    "eslint": "eslint 'src/**/*.js'",
+    "eslint:fix": "eslint --fix 'src/**/*.js'",
     "build:css": "postcss src/style/index.css -o src/index.css",
     "watch:css": "postcss src/style/index.css -o src/index.css -w",
     "start": "npm run watch:css & react-scripts start",

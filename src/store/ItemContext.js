@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
-import book from '../data/book';
+import data from '../data';
 
 const initialState = {
-  stock: book,
+  stock: data,
   cart: [],
 };
 

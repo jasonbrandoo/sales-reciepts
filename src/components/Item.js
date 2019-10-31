@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ItemContext } from '../context/ItemContext';
+import { ItemContext } from '../store/ItemContext';
 
 const Item = () => {
   const { state, dispatch } = useContext(ItemContext);
@@ -43,8 +43,8 @@ const Item = () => {
   };
 
   return (
-    <div className="w-2/5 h-full bg-indigo-600 flex flex-col">
-      <div className="flex flex-row flex-wrap justify-between overflow-y-auto p-5 h-full">
+    <div className="w-1/3 bg-indigo-600 flex flex-col">
+      <div className="flex flex-row flex-wrap justify-around overflow-y-auto p-5 h-full">
         {product &&
           product.map(items => (
             <button
@@ -59,7 +59,7 @@ const Item = () => {
       </div>
       <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full">
         <button
-          className="flex-none hover:bg-gray-100 hover:text-black text-white w-48 h-20 font-semibold"
+          className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-20 font-semibold"
           type="button"
           onClick={handleAllType}
         >
@@ -68,7 +68,7 @@ const Item = () => {
         {type &&
           type.map(types => (
             <button
-              className="flex-none hover:bg-gray-100 hover:text-black text-white w-48 h-20 font-semibold"
+              className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-20 font-semibold"
               type="button"
               onClick={() => handleType(types)}
               key={types}
