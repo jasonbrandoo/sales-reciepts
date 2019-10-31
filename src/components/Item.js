@@ -35,9 +35,12 @@ const Item = () => {
   };
 
   const handleClick = item => {
+    console.log(item);
     const data = {
-      quantity: 1,
-      item,
+      item: {
+        ...item,
+        quantity: 1,
+      },
     };
     dispatch({ type: 'GET_ITEM', payload: data });
   };
@@ -50,10 +53,11 @@ const Item = () => {
             <button
               key={items.title}
               type="button"
-              className="pt-12 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs"
+              className="pt-8 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-bold"
               onClick={() => handleClick(items)}
             >
               {items.title}
+              <span className="block">{items.price}</span>
             </button>
           ))}
       </div>

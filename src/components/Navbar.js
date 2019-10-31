@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@reach/router';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -10,7 +11,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-indigo-900 p-6">
       <div className="text-white">
-        <span className="font-semibold text-xl tracking-tight">Cashier</span>
+        <Link to="/" className="font-semibold text-xl tracking-tight">
+          Cashier
+        </Link>
       </div>
       <div className="block lg:hidden">
         <button
@@ -36,12 +39,12 @@ const Navbar = () => {
         }
       >
         <div className="text-sm lg:ml-auto">
-          <a
-            href="#logout"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+          <Link
+            to="daily-sales"
+            className="text-sm leading-none text-white mt-4 lg:mt-0 lg:p-4"
           >
-            Logout
-          </a>
+            Daily Sales
+          </Link>
         </div>
       </div>
     </nav>

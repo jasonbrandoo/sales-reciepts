@@ -4,6 +4,7 @@ import Main from './components/Main';
 import Navbar from './components/Navbar';
 import Checkout from './components/Checkout';
 import { ItemProvider } from './store/ItemContext';
+import DailySales from './components/DailySales';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Router className="h-full">
           <Main path="/" />
           <Checkout path="checkout" />
+          <DailySales path="daily-sales" />
         </Router>
       </ItemProvider>
     </div>
