@@ -6,10 +6,10 @@ const Detail = () => {
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [product, setProduct] = useState([]);
-  console.log(product);
+
   useEffect(() => {
-    const item = state.cart.length;
-    if (item > 0) {
+    const { cart } = state;
+    if (cart.length > 0) {
       const sum = state.cart.reduce((acc, curr) => {
         if (curr.item['total-price'] === undefined) {
           return acc + curr.item.price;
@@ -19,7 +19,7 @@ const Detail = () => {
       setTotalPrice(parseFloat(sum));
       setProduct(state.cart);
     }
-  }, [state.cart]);
+  }, [state]);
 
   const addQty = cart => {
     const base = state.stock.find(i => i.title === cart.item.title);
@@ -33,11 +33,10 @@ const Detail = () => {
       },
     };
     dispatch({ type: 'ADD_QTY', payload: total });
-    return multiply;
   };
 
   const subtractQty = cart => {
-    if (cart.quantity === 1) {
+    if (cart.item.quantity === 1) {
       return 1;
     }
     const base = state.stock.find(i => i.title === cart.item.title);
@@ -46,21 +45,21 @@ const Detail = () => {
       ...cart,
       item: {
         ...cart.item,
-        'total-price': parseFloat(cart.item.price - base.price),
+        'total-price': parseFloat(cart.item['total-price'] - base.price),
         quantity: minus,
       },
     };
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
-    return minus;
   };
 
   const handleClear = () => {
     dispatch({ type: 'CLEAR' });
+    setProduct([]);
     setTotalPrice(0);
   };
 
   return (
-    <div className="w-2/3 h-full p-8 bg-gray-100 relative">
+    <div className="w-2/3 h-full p-8 bg-indigo-200 relative">
       <table className="table-fixed w-full">
         <thead>
           <tr className="text-gray-900 text-xl">
@@ -117,13 +116,24 @@ const Detail = () => {
         ) : null}
       </table>
       <div className="absolute bottom-0 right-0 mb-12 mr-12 flex">
-        <Link
-          to="/checkout"
-          state={{ product, totalPrice }}
-          className="p-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100 text-2xl"
-        >
-          Checkout
-        </Link>
+        {product.length === 0 ? (
+          <button
+            type="button"
+            className="p-2 bg-green-600 rounded font-bold text-gray-100 text-2xl"
+            disabled
+          >
+            Checkout
+          </button>
+        ) : (
+          <Link
+            to="/checkout"
+            state={{ product, totalPrice }}
+            className="p-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100 text-2xl"
+          >
+            Checkout
+          </Link>
+        )}
+
         <button
           className="p-2 ml-2 bg-red-400 hover:bg-red-600 rounded font-bold text-gray-100 text-2xl"
           type="button"

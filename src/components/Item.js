@@ -35,7 +35,6 @@ const Item = () => {
   };
 
   const handleClick = item => {
-    console.log(item);
     const data = {
       item: {
         ...item,
@@ -46,7 +45,7 @@ const Item = () => {
   };
 
   return (
-    <div className="w-1/3 bg-indigo-600 flex flex-col">
+    <div className="w-1/3 bg-indigo-500 flex flex-col">
       <div className="flex flex-row flex-wrap justify-around overflow-y-auto p-5 h-full">
         {product &&
           product.map(items => (
