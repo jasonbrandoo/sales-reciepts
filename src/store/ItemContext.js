@@ -1,13 +1,18 @@
 import React, { useReducer } from 'react';
-import data from '../data';
 
 const initialState = {
-  stock: data,
+  stock: [],
+  daily: [],
   cart: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'GET_ALL_ITEM':
+      return {
+        ...state,
+        stock: [...state.stock, action.payload],
+      };
     case 'GET_ITEM': {
       const index = state.cart.findIndex(
         i => i.item.title === action.payload.item.title,
@@ -39,6 +44,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: [],
+      };
+    case 'ADD_DAILY':
+      return {
+        ...state,
+        daily: [...state.daily, action.payload],
       };
     default:
       throw new Error();

@@ -10,9 +10,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [x] User can click an item button to make a purchase.
 - [x] User can see an field displaying the total sale amount incremented as
       items are purchased.
-- [] User can see a reciept panel displaying the date and time of the sale,
-  as well as all items selected for purchase. This includes the item number,
-  description, and unit price.
+- [x] User can see a reciept panel displaying the date and time of the sale,
+      as well as all items selected for purchase. This includes the item number,
+      description, and unit price.
 - [x] User can click the 'Clear' button to clear all purchases at any time
       before checking out.
 - [ ] User can click the 'Checkout' button to complete purchase all selected

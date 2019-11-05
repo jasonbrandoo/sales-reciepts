@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import { ItemContext } from '../store/ItemContext';
+import useIndexedDB from '../hooks/useIndexedDB';
 
 const Detail = () => {
+  const { item } = useIndexedDB();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [product, setProduct] = useState([]);
@@ -22,7 +24,7 @@ const Detail = () => {
   }, [state]);
 
   const addQty = cart => {
-    const base = state.stock.find(i => i.title === cart.item.title);
+    const base = item.find(i => i.title === cart.item.title);
     const multiply = cart.item.quantity + 1;
     const total = {
       ...cart,
@@ -37,9 +39,9 @@ const Detail = () => {
 
   const subtractQty = cart => {
     if (cart.item.quantity === 1) {
-      return 1;
+      return;
     }
-    const base = state.stock.find(i => i.title === cart.item.title);
+    const base = item.find(i => i.title === cart.item.title);
     const minus = cart.item.quantity - 1;
     const total = {
       ...cart,
@@ -60,9 +62,10 @@ const Detail = () => {
 
   return (
     <div className="w-2/3 h-full p-8 bg-indigo-200 relative">
+      <h1 className="text-center text-2xl">Reciept</h1>
       <table className="table-fixed w-full">
         <thead>
-          <tr className="text-gray-900 text-xl">
+          <tr className="text-gray-900 text-xl border-black border-b-2 border-t-2">
             <th className="text-left">Name</th>
             <th>Quantity</th>
             <th>Price</th>
@@ -73,7 +76,7 @@ const Detail = () => {
           {state.cart.map(data => (
             <tr
               key={data.item.title}
-              className="text-sm text-gray-900 font-hairline h-8"
+              className="text-sm text-gray-900 font-hairline h-8 border-black border-b"
             >
               <td>{data.item.title}</td>
               <td className="text-center">
@@ -108,13 +111,16 @@ const Detail = () => {
               <td />
               <td />
               <td />
-              <td className="text-center border-black border-t">
+              <td className="text-center">
                 <span className="font-bold text-2xl">{totalPrice}</span>
               </td>
             </tr>
           </tfoot>
         ) : null}
       </table>
+      <div className="absolute bottom-0 left-0 text-2xl font-light mb-12 ml-12">
+        {new Date().toLocaleDateString('id')}
+      </div>
       <div className="absolute bottom-0 right-0 mb-12 mr-12 flex">
         {product.length === 0 ? (
           <button
