@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import { ItemContext } from '../store/ItemContext';
-import useIndexedDB from '../hooks/useIndexedDB';
+import useReciept from '../hooks/useReciept';
 
 const Detail = () => {
-  const { item } = useIndexedDB();
+  const { item } = useReciept();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [product, setProduct] = useState([]);

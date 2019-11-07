@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../store/ItemContext';
-import useIndexedDB from '../hooks/useIndexedDB';
+import useReciept from '../hooks/useReciept';
 import { groupBy, filterBy } from '../helpers';
 
 const Item = () => {
-  const { item } = useIndexedDB();
+  const { item } = useReciept();
   const { dispatch } = useContext(ItemContext);
   const [product, setProduct] = useState([]);
   const [type, setType] = useState([]);

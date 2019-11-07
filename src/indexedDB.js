@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 /* eslint-disable no-fallthrough */
 import { openDB } from 'idb';
 import Product from './data';
@@ -17,8 +18,6 @@ const init = async () => {
         }
         case 2:
           db.createObjectStore('daily', { keyPath: 'date' });
-        default:
-          break;
       }
     },
   });
@@ -41,7 +40,6 @@ const init = async () => {
   };
 
   return {
-    idb,
     getAllItem,
     getAllDailySales,
     addDialySales,
