@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from '@reach/router';
 import { ItemContext } from '../store/ItemContext';
 import useReciept from '../hooks/useReciept';
 
 const Detail = () => {
-  const { item } = useReciept();
+  const { item, addDaily } = useReciept();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [product, setProduct] = useState([]);
@@ -18,7 +17,7 @@ const Detail = () => {
         }
         return acc + curr.item['total-price'];
       }, 0);
-      setTotalPrice(parseFloat(sum));
+      setTotalPrice(parseFloat(sum).toFixed(2));
       setProduct(state.cart);
     }
   }, [state]);
@@ -52,6 +51,21 @@ const Detail = () => {
       },
     };
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
+  };
+
+  const checkout = () => {
+    const { cart } = state;
+    const date = new Date();
+    const input = {
+      cart: [...cart],
+      date,
+      total: totalPrice,
+    };
+    addDaily(input);
+    dispatch({ type: 'ADD_DAILY', payload: input });
+    dispatch({ type: 'CLEAR' });
+    setProduct([]);
+    setTotalPrice(0);
   };
 
   const handleClear = () => {
@@ -131,13 +145,13 @@ const Detail = () => {
             Checkout
           </button>
         ) : (
-          <Link
-            to="/checkout"
-            state={{ product, totalPrice }}
+          <button
+            type="button"
             className="p-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100 text-2xl"
+            onClick={checkout}
           >
             Checkout
-          </Link>
+          </button>
         )}
 
         <button

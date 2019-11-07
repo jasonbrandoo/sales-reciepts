@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../store/ItemContext';
 import useReciept from '../hooks/useReciept';
-import { groupBy, filterBy } from '../helpers';
+import { groupBy, filterBy } from '../utils';
 
 const Item = () => {
   const { item } = useReciept();
@@ -52,7 +52,7 @@ const Item = () => {
       <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full">
         {type.length > 0 ? (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-20 font-semibold"
+            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-10 font-semibold"
             type="button"
             onClick={handleAllType}
           >
@@ -61,7 +61,7 @@ const Item = () => {
         ) : null}
         {type.map(types => (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-20 font-semibold"
+            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-10 font-semibold"
             type="button"
             onClick={() => handleType(types)}
             key={types}

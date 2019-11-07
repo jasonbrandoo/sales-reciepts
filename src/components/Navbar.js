@@ -9,10 +9,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-indigo-900 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-indigo-900 p-5">
       <div className="text-white">
         <Link to="/" className="font-semibold text-xl tracking-tight">
-          Cashier
+          Reciept App
         </Link>
       </div>
       <div className="block lg:hidden">

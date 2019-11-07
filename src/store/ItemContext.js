@@ -8,11 +8,6 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'GET_ALL_ITEM':
-      return {
-        ...state,
-        stock: [...state.stock, action.payload],
-      };
     case 'GET_ITEM': {
       const index = state.cart.findIndex(
         i => i.item.title === action.payload.item.title,
@@ -44,6 +39,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: [],
+        daily: [],
       };
     case 'ADD_DAILY':
       return {

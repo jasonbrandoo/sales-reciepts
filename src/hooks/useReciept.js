@@ -14,11 +14,12 @@ const useIndexedDB = () => {
     requestAllItem();
   }, []);
 
-  const addDaily = async date => {
+  const addDaily = async input => {
     const db = await idb();
-    db.addDialySales(date);
+    console.log(input);
+    db.addDialySales(input);
     setDaily(preveState => {
-      return [...preveState, date];
+      return [...preveState, input];
     });
   };
 
