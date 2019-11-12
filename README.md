@@ -34,7 +34,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
       All' buttons under the purchase panel
 - [ ] User can click the 'Clear Entry' button to clear the last selected item
       from the receipt panel. This has the effect of unselecting that item.
-- [ ] User can click the 'Cancel All' button to clear all purchases made
+- [x] User can click the 'Cancel All' button to clear all purchases made
       before checking out.
 - [ ] User can see an input field in the input panel the user may enter the
       name of the customer into when a purchase is made. The customer name will be

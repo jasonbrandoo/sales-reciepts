@@ -9,9 +9,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_ITEM': {
-      const index = state.cart.findIndex(
-        i => i.item.title === action.payload.item.title,
-      );
+      const index = state.cart.findIndex(i => i.title === action.payload.title);
       if (index === -1) {
         return {
           ...state,
@@ -27,7 +25,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.map(i => {
-          if (i.item.title === action.payload.item.title) {
+          if (i.title === action.payload.title) {
             return { ...i, ...action.payload };
           }
           return {

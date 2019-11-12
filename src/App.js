@@ -13,8 +13,8 @@ const App = () => {
       <ItemProvider>
         <Router className="h-full">
           <Main path="/" />
-          <Checkout path="checkout" />
-          <DailySales path="daily-sales" />
+          <Checkout path="/checkout" />
+          <DailySales path="/daily-sales" />
         </Router>
       </ItemProvider>
     </div>

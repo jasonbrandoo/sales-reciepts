@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ItemContext } from '../store/ItemContext';
-import useReciept from '../hooks/useReciept';
+import useReciept from '../hooks/useReceipt';
 import { groupBy, filterBy } from '../utils';
 
 const Item = () => {
@@ -26,10 +26,8 @@ const Item = () => {
 
   const handleClick = selectedItem => {
     const data = {
-      item: {
-        ...selectedItem,
-        quantity: 1,
-      },
+      ...selectedItem,
+      quantity: 1,
     };
     dispatch({ type: 'GET_ITEM', payload: data });
   };
@@ -49,19 +47,19 @@ const Item = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full">
+      <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full h-16">
         {type.length > 0 ? (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-10 font-semibold"
+            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-full font-semibold"
             type="button"
             onClick={handleAllType}
           >
-            All
+            ALL
           </button>
         ) : null}
         {type.map(types => (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-10 font-semibold"
+            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-full font-semibold uppercase"
             type="button"
             onClick={() => handleType(types)}
             key={types}

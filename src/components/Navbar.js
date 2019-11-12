@@ -39,11 +39,8 @@ const Navbar = () => {
         }
       >
         <div className="text-sm lg:ml-auto">
-          <Link
-            to="daily-sales"
-            className="text-sm leading-none text-white mt-4 lg:mt-0 lg:p-4"
-          >
-            Daily Sales
+          <Link to="setting" className="text-sm text-white mt-4 lg:mt-0 lg:p-4">
+            Setting
           </Link>
         </div>
       </div>
