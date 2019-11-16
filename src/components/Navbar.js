@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-indigo-900 p-5">
+    <nav className="flex items-center justify-between flex-wrap bg-blue-900 p-5">
       <div className="text-white">
         <Link to="/" className="font-semibold text-xl tracking-tight">
           Reciept App

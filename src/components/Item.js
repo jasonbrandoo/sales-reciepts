@@ -33,13 +33,13 @@ const Item = () => {
   };
 
   return (
-    <div className="w-1/3 bg-indigo-500 flex flex-col">
+    <div className="w-1/3 bg-blue-500 flex flex-col">
       <div className="flex flex-row flex-wrap justify-around overflow-y-auto p-5 h-full">
         {product.map(items => (
           <button
             key={items.title}
             type="button"
-            className="pt-8 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-bold"
+            className="pt-8 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
             onClick={() => handleClick(items)}
           >
             {items.title}
@@ -47,7 +47,7 @@ const Item = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-row items-center bg-indigo-900 overflow-x-scroll overflow-y-hidden w-full h-16">
+      <div className="flex flex-row items-center bg-blue-900 overflow-x-scroll overflow-y-hidden w-full h-16">
         {type.length > 0 ? (
           <button
             className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-full font-semibold"

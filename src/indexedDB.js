@@ -39,10 +39,15 @@ const init = async () => {
     await getAllDailySales();
   };
 
+  const clearDaily = async () => {
+    await idb.deleteObjectStore('daily');
+  };
+
   return {
     getAllItem,
     getAllDailySales,
     addDialySales,
+    clearDaily,
   };
 };
 

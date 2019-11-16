@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useReceipt from '../hooks/useReceipt';
 
 const DailySales = () => {
-  const [dailySales, setDailySales] = useState([]);
-  const { daily } = useReceipt();
-  const dates = new Date().toLocaleDateString('id');
+  const { daily, clearDaily } = useReceipt();
 
-  useEffect(() => {
-    const test = daily.reduce((acc, curr) => {
-      const { date, cart, total } = curr;
-      return [
-        ...acc,
-        {
-          [date.getTime()]: {
-            total,
-            cart,
-          },
-        },
-      ];
-    }, []);
-    setDailySales(test);
-  }, [daily]);
+  const handleClear = () => {
+    clearDaily();
+  };
 
   return (
-    <div className="w-9/12 mx-auto bg-blue-100">
-      <h1 className="text-2xl">{dates}</h1>
-      {daily.map(dailyObj => {
+    <div className="w-9/12 mx-auto mb-5">
+      <h1 className="text-2xl text-center">Daily Sales</h1>
+      {daily.map((dailyObj, index) => {
         return (
-          <div>
-            <h1>{dailyObj.date.getMonth()}</h1>
-            <table className="w-full">
+          <div className="pb-5" key={dailyObj.date}>
+            <div className="flex justify-between items-center">
+              <div className="text-xl">{index + 1}</div>
+              <div className="text-xl">
+                {dailyObj.date.getDate()}/{dailyObj.date.getMonth()}/
+                {dailyObj.date.getFullYear()} {dailyObj.date.getHours()}:
+                {dailyObj.date.getMinutes()}:{dailyObj.date.getSeconds()}
+              </div>
+            </div>
+            <table className="w-full border">
               <thead>
                 <tr className="border">
                   <th className="text-left w-1/2">Name</th>
@@ -41,21 +34,40 @@ const DailySales = () => {
               <tbody>
                 {dailyObj.cart.map(item => {
                   return (
-                    <tr>
+                    <tr key={item.title}>
                       <td>{item.title}</td>
-                      <td>{item.quantity}</td>
-                      <td>{item.price}</td>
-                      <td>
+                      <td className="text-center">{item.quantity}</td>
+                      <td className="text-center">{item.price}</td>
+                      <td className="text-center">
                         {item['total-price'] ? item['total-price'] : item.price}
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
+              <tfoot>
+                <tr className="border">
+                  <td />
+                  <td />
+                  <td />
+                  <td className="text-center font-semibold">
+                    {dailyObj.total}
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           </div>
         );
       })}
+      {daily.length === 0 ? null : (
+        <button
+          type="button"
+          className="px-2 bg-red-400 hover:bg-red-700 text-white rounded text-2xl"
+          onClick={handleClear}
+        >
+          Clear All
+        </button>
+      )}
     </div>
   );
 };

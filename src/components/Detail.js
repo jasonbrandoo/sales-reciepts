@@ -70,12 +70,12 @@ const Detail = () => {
   };
 
   return (
-    <div className="w-2/3 h-full bg-indigo-200 flex flex-col">
+    <div className="w-2/3 h-full bg-gray-200 flex flex-col">
       <div className="relative h-full p-8">
-        <h1 className="text-center text-2xl">Reciept</h1>
+        <h1 className="text-center text-2xl font-bold">Reciept</h1>
         <table className="table-fixed w-full">
           <thead>
-            <tr className="text-gray-900 text-xl border-black border-b-2 border-t-2">
+            <tr className="text-gray-900 text-xl border-black border-b border-t">
               <th className="text-left">Name</th>
               <th>Quantity</th>
               <th>Price</th>
@@ -133,7 +133,7 @@ const Detail = () => {
           {product.length === 0 ? (
             <button
               type="button"
-              className="px-2 bg-green-600 rounded font-bold text-gray-100 text-2xl"
+              className="px-2 bg-green-600 rounded text-gray-100 text-2xl"
               disabled
             >
               Checkout
@@ -141,7 +141,7 @@ const Detail = () => {
           ) : (
             <button
               type="button"
-              className="px-2 bg-green-400 hover:bg-green-600 rounded font-bold text-gray-100 text-2xl"
+              className="px-2 bg-green-400 hover:bg-green-600 rounded text-gray-100 text-2xl"
               onClick={checkout}
             >
               Checkout
@@ -149,7 +149,7 @@ const Detail = () => {
           )}
           {product.length === 0 ? (
             <button
-              className="px-2 ml-2 bg-red-600 rounded font-bold text-gray-100 text-2xl"
+              className="px-2 ml-2 bg-red-600 rounded text-gray-100 text-2xl"
               type="button"
               disabled
             >
@@ -157,7 +157,7 @@ const Detail = () => {
             </button>
           ) : (
             <button
-              className="px-2 ml-2 bg-red-400 hover:bg-red-600 rounded font-bold text-gray-100 text-2xl"
+              className="px-2 ml-2 bg-red-400 hover:bg-red-600 rounded text-gray-100 text-2xl"
               type="button"
               onClick={handleClear}
             >
@@ -169,7 +169,7 @@ const Detail = () => {
       <div className="ml-auto h-16 pr-8">
         <Link
           to="/daily-sales"
-          className="px-2 py-1 bg-blue-500 rounded text-white font-bold"
+          className="px-2 py-1 bg-blue-500 rounded text-white "
         >
           Daily Sales
         </Link>

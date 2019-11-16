@@ -22,7 +22,12 @@ const useIndexedDB = () => {
     });
   };
 
-  return { item, daily, addDaily };
+  const clearDaily = async () => {
+    const db = await idb();
+    db.clearDaily();
+  };
+
+  return { item, daily, addDaily, clearDaily };
 };
 
 export default useIndexedDB;

@@ -8,7 +8,7 @@ import DailySales from './components/DailySales';
 
 const App = () => {
   return (
-    <div className="flex flex-col h-screen max-h-full overflow-hidden">
+    <div className="flex flex-col h-screen max-h-full">
       <Navbar />
       <ItemProvider>
         <Router className="h-full">
