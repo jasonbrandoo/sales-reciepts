@@ -12,14 +12,14 @@ const Detail = () => {
   useEffect(() => {
     const { cart } = state;
     if (cart.length > 0) {
-      const sum = state.cart.reduce((acc, curr) => {
+      const sum = cart.reduce((acc, curr) => {
         if (curr['total-price'] === undefined) {
           return acc + curr.price;
         }
         return acc + curr['total-price'];
       }, 0);
       setTotalPrice(parseFloat(sum).toFixed(2));
-      setProduct(state.cart);
+      setProduct(cart);
     }
   }, [state]);
 
@@ -73,9 +73,10 @@ const Detail = () => {
     <div className="w-2/3 h-full bg-gray-200 flex flex-col">
       <div className="relative h-full p-8">
         <h1 className="text-center text-2xl font-bold">Reciept</h1>
-        <table className="table-fixed w-full">
+        <table className="table-fixed w-full border border-black">
           <thead>
             <tr className="text-gray-900 text-xl border-black border-b border-t">
+              <th className="w-16">No</th>
               <th className="text-left">Name</th>
               <th>Quantity</th>
               <th>Price</th>
@@ -83,12 +84,13 @@ const Detail = () => {
             </tr>
           </thead>
           <tbody>
-            {state.cart.map(data => (
+            {state.cart.map((data, index) => (
               <tr
                 key={data.title}
-                className="text-sm text-gray-900 font-hairline h-8 border-black border-b"
+                className="text-sm text-gray-900 font-hairline h-8"
               >
-                <td>{data.title}</td>
+                <td className="text-center">{index + 1}</td>
+                <td className="text-left">{data.title}</td>
                 <td className="text-center">
                   <button
                     className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
@@ -115,7 +117,8 @@ const Detail = () => {
           </tbody>
           {totalPrice > 0 ? (
             <tfoot>
-              <tr className="text-sm text-gray-800 font-hairline h-8">
+              <tr className="text-sm text-gray-800 font-hairline h-8 border border-black">
+                <td />
                 <td />
                 <td />
                 <td />
@@ -169,7 +172,7 @@ const Detail = () => {
       <div className="ml-auto h-16 pr-8">
         <Link
           to="/daily-sales"
-          className="px-2 py-1 bg-blue-500 rounded text-white "
+          className="px-2 py-1 bg-blue-400 hover:bg-blue-600 rounded text-white "
         >
           Daily Sales
         </Link>

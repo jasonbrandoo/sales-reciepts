@@ -1,31 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useReceipt from '../hooks/useReceipt';
 
 const DailySales = () => {
   const { daily, clearDaily } = useReceipt();
+  const [sales, setSales] = useState([]);
+
+  useEffect(() => {
+    setSales(daily);
+  }, [daily]);
 
   const handleClear = () => {
+    setSales([]);
     clearDaily();
   };
 
   return (
     <div className="w-9/12 mx-auto mb-5">
       <h1 className="text-2xl text-center">Daily Sales</h1>
-      {daily.map((dailyObj, index) => {
+      {sales.map((dailyObj, index) => {
+        const d = dailyObj.date.getDate();
+        const m = new Intl.DateTimeFormat('en', { month: 'long' }).format(
+          dailyObj.date,
+        );
+        const y = dailyObj.date.getFullYear();
+        const H = dailyObj.date.getHours();
+        const M = dailyObj.date.getMinutes();
+        const S = dailyObj.date.getSeconds();
         return (
           <div className="pb-5" key={dailyObj.date}>
-            <div className="flex justify-between items-center">
-              <div className="text-xl">{index + 1}</div>
-              <div className="text-xl">
-                {dailyObj.date.getDate()}/{dailyObj.date.getMonth()}/
-                {dailyObj.date.getFullYear()} {dailyObj.date.getHours()}:
-                {dailyObj.date.getMinutes()}:{dailyObj.date.getSeconds()}
+            <div className="flex justify-between items-center mb-3">
+              <div className="text-sm font-hairline">No. {index + 1}</div>
+              <div className="text-sm font-hairline">
+                {d}/{m}/{y} - {H}:{M}:{S}
               </div>
             </div>
-            <table className="w-full border">
+            <table className="w-full border border-black">
               <thead>
-                <tr className="border">
-                  <th className="text-left w-1/2">Name</th>
+                <tr className="border border-black">
+                  <th className="text-left w-1/2 pl-5">Name</th>
                   <th>Qty</th>
                   <th>Price</th>
                   <th>Total</th>
@@ -35,7 +47,7 @@ const DailySales = () => {
                 {dailyObj.cart.map(item => {
                   return (
                     <tr key={item.title}>
-                      <td>{item.title}</td>
+                      <td className="pl-5">{item.title}</td>
                       <td className="text-center">{item.quantity}</td>
                       <td className="text-center">{item.price}</td>
                       <td className="text-center">
@@ -46,7 +58,7 @@ const DailySales = () => {
                 })}
               </tbody>
               <tfoot>
-                <tr className="border">
+                <tr className="border border-black">
                   <td />
                   <td />
                   <td />
@@ -59,7 +71,9 @@ const DailySales = () => {
           </div>
         );
       })}
-      {daily.length === 0 ? null : (
+      {sales.length === 0 ? (
+        <h1 className="text-center mt-10">No Records</h1>
+      ) : (
         <button
           type="button"
           className="px-2 bg-red-400 hover:bg-red-700 text-white rounded text-2xl"

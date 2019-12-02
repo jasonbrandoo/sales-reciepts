@@ -36,18 +36,18 @@ const init = async () => {
     const tx = idb.transaction('daily', 'readwrite');
     tx.store.add(date);
     await tx.done;
-    await getAllDailySales();
   };
 
-  const clearDaily = async () => {
-    await idb.deleteObjectStore('daily');
+  const clearDailySales = async () => {
+    const tx = idb.clear('daily');
+    await tx.done;
   };
 
   return {
     getAllItem,
     getAllDailySales,
     addDialySales,
-    clearDaily,
+    clearDailySales,
   };
 };
 

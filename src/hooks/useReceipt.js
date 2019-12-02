@@ -24,7 +24,7 @@ const useIndexedDB = () => {
 
   const clearDaily = async () => {
     const db = await idb();
-    db.clearDaily();
+    db.clearDailySales();
   };
 
   return { item, daily, addDaily, clearDaily };
