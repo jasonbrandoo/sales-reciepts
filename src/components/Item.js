@@ -24,7 +24,7 @@ const Item = () => {
     setProduct(filterType);
   };
 
-  const handleClick = selectedItem => {
+  const handleProduct = selectedItem => {
     const data = {
       ...selectedItem,
       quantity: 1,
@@ -39,11 +39,11 @@ const Item = () => {
           <button
             key={items.title}
             type="button"
-            className="pt-8 px-6 m-2 w-32 h-32 border border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
-            onClick={() => handleClick(items)}
+            className="pt-8 px-6 m-2 w-32 h-32 border-2 border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
+            onClick={() => handleProduct(items)}
           >
             {items.title}
-            <span className="block">{items.price}</span>
+            <span className="block">${items.price}</span>
           </button>
         ))}
       </div>

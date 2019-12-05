@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import idb from '../indexedDB';
 
-const useIndexedDB = () => {
+const useReciept = () => {
   const [item, setItem] = useState([]);
   const [daily, setDaily] = useState([]);
 
@@ -17,9 +17,6 @@ const useIndexedDB = () => {
   const addDaily = async input => {
     const db = await idb();
     db.addDialySales(input);
-    setDaily(preveState => {
-      return [...preveState, input];
-    });
   };
 
   const clearDaily = async () => {
@@ -30,4 +27,4 @@ const useIndexedDB = () => {
   return { item, daily, addDaily, clearDaily };
 };
 
-export default useIndexedDB;
+export default useReciept;

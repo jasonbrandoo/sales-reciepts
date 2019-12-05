@@ -7,7 +7,7 @@ const Detail = () => {
   const { item, addDaily } = useReciept();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [product, setProduct] = useState([]);
+  const [productDetail, setProductDetail] = useState([]);
 
   useEffect(() => {
     const { cart } = state;
@@ -19,7 +19,7 @@ const Detail = () => {
         return acc + curr['total-price'];
       }, 0);
       setTotalPrice(parseFloat(sum).toFixed(2));
-      setProduct(cart);
+      setProductDetail(cart);
     }
   }, [state]);
 
@@ -48,6 +48,10 @@ const Detail = () => {
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
   };
 
+  const clearEntry = () => {
+    dispatch({ type: 'CLEAR_ENTRY' });
+  };
+
   const checkout = () => {
     const { cart } = state;
     const date = new Date();
@@ -57,25 +61,27 @@ const Detail = () => {
       total: totalPrice,
     };
     addDaily(input);
-    dispatch({ type: 'ADD_DAILY', payload: input });
-    dispatch({ type: 'CLEAR' });
-    setProduct([]);
+    dispatch({ type: 'CLEAR_ALL' });
+    setProductDetail([]);
     setTotalPrice(0);
   };
 
-  const handleClear = () => {
-    dispatch({ type: 'CLEAR' });
-    setProduct([]);
+  const cancelAll = () => {
+    dispatch({ type: 'CLEAR_ALL' });
+    setProductDetail([]);
     setTotalPrice(0);
   };
 
   return (
     <div className="w-2/3 h-full bg-gray-200 flex flex-col">
       <div className="relative h-full p-8">
-        <h1 className="text-center text-2xl font-bold">Reciept</h1>
-        <table className="table-fixed w-full border border-black">
+        <div className="flex justify-between font-semibold text-xl">
+          <h3>Reciept</h3>
+          <h3>{new Date().toLocaleDateString('id')}</h3>
+        </div>
+        <table className="table-fixed w-full border-2 border-black">
           <thead>
-            <tr className="text-gray-900 text-xl border-black border-b border-t">
+            <tr className="text-gray-900 border-2 border-black text-xl">
               <th className="w-16">No</th>
               <th className="text-left">Name</th>
               <th>Quantity</th>
@@ -108,35 +114,32 @@ const Detail = () => {
                     +
                   </button>
                 </td>
-                <td className="text-center">{data.price}</td>
+                <td className="text-center">${data.price}</td>
                 <td className="text-center">
-                  {data['total-price'] ? data['total-price'] : data.price}
+                  ${data['total-price'] ? data['total-price'] : data.price}
                 </td>
               </tr>
             ))}
           </tbody>
           {totalPrice > 0 ? (
             <tfoot>
-              <tr className="text-sm text-gray-800 font-hairline h-8 border border-black">
+              <tr className="text-sm text-gray-800 font-hairline h-8 border-2 border-black">
                 <td />
                 <td />
                 <td />
                 <td />
                 <td className="text-center">
-                  <span className="font-bold text-2xl">{totalPrice}</span>
+                  <span className="font-bold text-xl">${totalPrice}</span>
                 </td>
               </tr>
             </tfoot>
           ) : null}
         </table>
-        <div className="absolute bottom-0 left-0 text-2xl font-light pl-8 pb-8">
-          {new Date().toLocaleDateString('id')}
-        </div>
         <div className="absolute bottom-0 right-0 pr-8 pb-8 flex">
-          {product.length === 0 ? (
+          {productDetail.length === 0 ? (
             <button
               type="button"
-              className="px-2 bg-green-600 rounded text-gray-100 text-2xl"
+              className="p-1 border-2 border-green-500 rounded text-green-500 text-2xl"
               disabled
             >
               Checkout
@@ -144,35 +147,53 @@ const Detail = () => {
           ) : (
             <button
               type="button"
-              className="px-2 bg-green-400 hover:bg-green-600 rounded text-gray-100 text-2xl"
+              className="p-1 border-2 border-green-500 hover:bg-green-500 hover:text-white rounded text-green-500 text-2xl"
               onClick={checkout}
             >
               Checkout
             </button>
           )}
-          {product.length === 0 ? (
-            <button
-              className="px-2 ml-2 bg-red-600 rounded text-gray-100 text-2xl"
-              type="button"
-              disabled
-            >
-              Cancel All
-            </button>
+          {productDetail.length === 0 ? (
+            <>
+              <button
+                className="p-1 ml-2 border-2 border-yellow-500 rounded text-yellow-500 text-2xl"
+                type="button"
+                disabled
+              >
+                Clear Entry
+              </button>
+              <button
+                className="p-1 ml-2 border-2 border-red-500 rounded text-red-500 text-2xl"
+                type="button"
+                disabled
+              >
+                Cancel All
+              </button>
+            </>
           ) : (
-            <button
-              className="px-2 ml-2 bg-red-400 hover:bg-red-600 rounded text-gray-100 text-2xl"
-              type="button"
-              onClick={handleClear}
-            >
-              Cancel All
-            </button>
+            <>
+              <button
+                className="p-1 ml-2 border-2 border-yellow-500 hover:bg-yellow-500 hover:text-white text-yellow-500 rounded text-2xl"
+                type="button"
+                onClick={clearEntry}
+              >
+                Clear Entry
+              </button>
+              <button
+                className="p-1 ml-2 border-2 border-red-500 hover:bg-red-500 hover:text-white text-red-500 rounded text-2xl"
+                type="button"
+                onClick={cancelAll}
+              >
+                Cancel All
+              </button>
+            </>
           )}
         </div>
       </div>
       <div className="ml-auto h-16 pr-8">
         <Link
           to="/daily-sales"
-          className="px-2 py-1 bg-blue-400 hover:bg-blue-600 rounded text-white "
+          className="p-1 border-2 border-blue-500 hover:bg-blue-500 hover:text-white rounded text-blue-500 text-2xl"
         >
           Daily Sales
         </Link>

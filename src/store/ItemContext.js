@@ -2,7 +2,6 @@ import React, { useReducer } from 'react';
 
 const initialState = {
   stock: [],
-  daily: [],
   cart: [],
 };
 
@@ -33,16 +32,17 @@ const reducer = (state, action) => {
           };
         }),
       };
-    case 'CLEAR':
+    case 'CLEAR_ENTRY': {
+      const lastItem = state.cart.length - 1;
+      return {
+        ...state,
+        cart: state.cart.slice(0, lastItem),
+      };
+    }
+    case 'CLEAR_ALL':
       return {
         ...state,
         cart: [],
-        daily: [],
-      };
-    case 'ADD_DAILY':
-      return {
-        ...state,
-        daily: [...state.daily, action.payload],
       };
     default:
       throw new Error();
