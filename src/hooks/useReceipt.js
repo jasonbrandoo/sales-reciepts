@@ -6,6 +6,11 @@ const useReciept = () => {
   const [daily, setDaily] = useState([]);
 
   useEffect(() => {
+    if (!window.indexedDB) {
+      window.alert(
+        "Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.",
+      );
+    }
     const requestAllItem = async () => {
       const db = await idb();
       db.getAllItem().then(data => setItem(data));

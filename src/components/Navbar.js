@@ -39,9 +39,12 @@ const Navbar = () => {
         }
       >
         <div className="text-sm lg:ml-auto">
-          <Link to="setting" className="text-sm text-white mt-4 lg:mt-0 lg:p-4">
-            Setting
-          </Link>
+          <a
+            href="https://github.com/jasonbrandoo/receipt"
+            className="text-sm text-white mt-4 lg:mt-0 lg:p-4"
+          >
+            Github
+          </a>
         </div>
       </div>
     </nav>

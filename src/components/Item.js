@@ -39,7 +39,7 @@ const Item = () => {
           <button
             key={items.title}
             type="button"
-            className="pt-8 px-6 m-2 w-32 h-32 border-2 border-white hover:bg-gray-100 hover:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
+            className="pt-8 px-6 m-2 w-32 h-32 border-2 border-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
             onClick={() => handleProduct(items)}
           >
             {items.title}
@@ -48,18 +48,16 @@ const Item = () => {
         ))}
       </div>
       <div className="flex flex-row items-center bg-blue-900 overflow-x-scroll overflow-y-hidden w-full h-16">
-        {type.length > 0 ? (
-          <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-full font-semibold"
-            type="button"
-            onClick={handleAllType}
-          >
-            ALL
-          </button>
-        ) : null}
+        <button
+          className="flex-none hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black text-white w-32 h-full font-semibold"
+          type="button"
+          onClick={handleAllType}
+        >
+          ALL
+        </button>
         {type.map(types => (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black text-white w-32 h-full font-semibold uppercase"
+            className="flex-none hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black text-white w-32 h-full font-semibold uppercase"
             type="button"
             onClick={() => handleType(types)}
             key={types}
