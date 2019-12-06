@@ -16,7 +16,7 @@
   "scripts": {
     "eslint": "eslint 'src/**/*.js'",
     "eslint:fix": "eslint --fix 'src/**/*.js'",
-    "build:css": "postcss src/style/index.css -o src/index.css",
+    "build:css": "postcss src/style/index.css -o src/index.css --env production",
     "watch:css": "postcss src/style/index.css -o src/index.css -w",
     "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css && react-scripts build",
@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.1.0",
