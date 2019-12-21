@@ -1,9 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Sales Reciepts
 
-## TODO
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[Demo Project](https://salesreciept.netlify.com/).
+ 
+## How to use
+```bash
+git clone https://github.com/jasonbrandoo/sales-reciepts.git
+cd sales-reciepts
+npm install
+npm start
+```
+
+## Todo
 - [x] User can see an purchase panel containing buttons for each item containing
       the item number, description, and unit price, as well as a 'Clear' and a
       'Checkout' button.
