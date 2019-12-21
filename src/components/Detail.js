@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import { ItemContext } from '../store/ItemContext';
 import useReciept from '../hooks/useReceipt';
+import Modal from './Modal';
 
 const Detail = () => {
   const { item, addDaily } = useReciept();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [productDetail, setProductDetail] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const { cart } = state;
@@ -53,6 +55,9 @@ const Detail = () => {
   };
 
   const checkout = () => {
+    setOpen(prevState => {
+      return !prevState;
+    });
     const { cart } = state;
     const date = new Date();
     const input = {
@@ -73,25 +78,26 @@ const Detail = () => {
   };
 
   return (
-    <div className="w-2/3 h-full bg-gray-200 flex flex-col">
+    <div className="md:w-2/3 sm:w-full h-full bg-blue-100 flex flex-col">
+      <Modal open={open} setOpen={setOpen} />
       <div className="relative h-full p-8">
-        <div className="flex justify-between font-semibold text-xl">
+        <div className="flex justify-between font-hairline text-xl">
           <h3>Reciept</h3>
           <h3>{new Date().toLocaleDateString('id')}</h3>
         </div>
-        <div className="flex w-full text-lg">
-          <h3 className="w-10">No</h3>
-          <h3 className="w-1/2">Name</h3>
-          <h3 className="w-1/5">Quantity</h3>
-          <h3 className="w-1/5">Price</h3>
-          <h3 className="w-1/5">Total</h3>
+        <div className="flex w-full text-lg font-semibold border border-black">
+          <h3 className="w-12 text-center">No</h3>
+          <h3 className="w-1/2 text-left">Name</h3>
+          <h3 className="w-1/5 text-center">Quantity</h3>
+          <h3 className="w-1/5 text-center">Price</h3>
+          <h3 className="w-1/5 text-center">Total</h3>
         </div>
-        <div className="flex flex-col w-full h-64 overflow-y-auto font-hairline">
+        <div className="flex flex-col w-full h-64 border-r border-l border-black overflow-y-auto font-hairline">
           {state.cart.map((data, index) => (
-            <div className="flex flex-row my-1">
-              <div className="w-10">{index + 1}</div>
-              <div className="w-1/2">{data.title}</div>
-              <div className="w-1/5">
+            <div className="flex flex-row my-1" key={data.title}>
+              <div className="w-12 text-center">{index + 1}.</div>
+              <div className="w-1/2 text-left">{data.title}</div>
+              <div className="w-1/5 text-center">
                 <button
                   className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
                   type="button"
@@ -108,21 +114,21 @@ const Detail = () => {
                   +
                 </button>
               </div>
-              <div className="w-1/5">${data.price}</div>
-              <div className="w-1/5">
+              <div className="w-1/5 text-center">${data.price}</div>
+              <div className="w-1/5 text-center">
                 ${data['total-price'] ? data['total-price'] : data.price}
               </div>
             </div>
           ))}
         </div>
-        <div className="flex flex-row border-t-2 border-black">
+        <div className="flex flex-row border border-black">
           <div className="w-10" />
           <div className="w-1/2" />
           <div className="w-1/5" />
-          <div className="w-1/5 font-semibold text-lg my-2">Sub Total</div>
-          <div className="w-1/5 font-semibold text-lg my-2">${totalPrice}</div>
+          <div className="w-1/5 font-semibold text-lg ">Sub Total</div>
+          <div className="w-1/5 font-semibold text-lg ">${totalPrice}</div>
         </div>
-        <div className="flex">
+        <div className="flex mt-2">
           {productDetail.length === 0 ? (
             <>
               <button
