@@ -4,7 +4,7 @@ import Detail from './Detail';
 
 const Main = () => {
   return (
-    <div className="md:flex sm:block justify-center h-full">
+    <div className="sm:flex justify-center h-full">
       <Item />
       <Detail />
     </div>

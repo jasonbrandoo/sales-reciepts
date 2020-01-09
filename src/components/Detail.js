@@ -80,26 +80,26 @@ const Detail = () => {
   return (
     <div className="md:w-2/3 sm:w-full h-full bg-blue-100 flex flex-col">
       <Modal open={open} setOpen={setOpen} />
-      <div className="relative h-full p-8">
+      <div className="h-full p-8">
         <div className="flex justify-between font-hairline text-xl">
           <h3>Reciept</h3>
           <h3>{new Date().toLocaleDateString('id')}</h3>
         </div>
-        <div className="flex w-full text-lg font-semibold border border-black">
+        <div className="flex w-full text-xs sm:text-lg font-semibold border border-black">
           <h3 className="w-12 text-center">No</h3>
-          <h3 className="w-1/2 text-left">Name</h3>
+          <h3 className="w-1/5 sm:w-1/2 text-left">Name</h3>
           <h3 className="w-1/5 text-center">Quantity</h3>
           <h3 className="w-1/5 text-center">Price</h3>
           <h3 className="w-1/5 text-center">Total</h3>
         </div>
-        <div className="flex flex-col w-full h-64 border-r border-l border-black overflow-y-auto font-hairline">
+        <div className="flex flex-col w-full h-64 text-xs sm:text-base border-r border-l border-black overflow-y-auto font-hairline">
           {state.cart.map((data, index) => (
             <div className="flex flex-row my-1" key={data.title}>
               <div className="w-12 text-center">{index + 1}.</div>
-              <div className="w-1/2 text-left">{data.title}</div>
+              <div className="w-1/5 sm:w-1/2 text-left">{data.title}</div>
               <div className="w-1/5 text-center">
                 <button
-                  className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-5"
+                  className="mr-2 bg-red-500 hover:bg-red-700 text-white text-center rounded inline-block w-2 sm:w-5"
                   type="button"
                   onClick={() => subtractQty(data)}
                 >
@@ -107,7 +107,7 @@ const Detail = () => {
                 </button>
                 {data.quantity}
                 <button
-                  className="ml-2 bg-blue-500 hover:bg-blue-700 text-white text-center rounded inline-block w-5"
+                  className="ml-2 bg-blue-500 hover:bg-blue-700 text-white text-center rounded inline-block w-2 sm:w-5"
                   type="button"
                   onClick={() => addQty(data)}
                 >
@@ -121,32 +121,36 @@ const Detail = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-row border border-black">
+        <div className="flex flex-row border border-black text-center">
           <div className="w-10" />
-          <div className="w-1/2" />
+          <div className="w-1/5 sm:w-1/2" />
           <div className="w-1/5" />
-          <div className="w-1/5 font-semibold text-lg ">Sub Total</div>
-          <div className="w-1/5 font-semibold text-lg ">${totalPrice}</div>
+          <div className="w-1/5 font-semibold text-xs sm:text-base">
+            Sub Total
+          </div>
+          <div className="w-1/5 font-semibold text-xs sm:text-base">
+            ${totalPrice}
+          </div>
         </div>
         <div className="flex mt-2">
           {productDetail.length === 0 ? (
             <>
               <button
                 type="button"
-                className="p-1 border-2 border-green-500 rounded text-green-500 text-2xl"
+                className="p-1 border-2 border-green-500 rounded text-green-500 text-xs sm:text-base"
                 disabled
               >
                 Checkout
               </button>
               <button
-                className="p-1 ml-2 border-2 border-yellow-500 rounded text-yellow-500 text-2xl"
+                className="p-1 ml-2 border-2 border-yellow-500 rounded text-yellow-500 text-xs sm:text-base"
                 type="button"
                 disabled
               >
                 Clear Entry
               </button>
               <button
-                className="p-1 ml-2 border-2 border-red-500 rounded text-red-500 text-2xl"
+                className="p-1 ml-2 border-2 border-red-500 rounded text-red-500 text-xs sm:text-base"
                 type="button"
                 disabled
               >
@@ -157,20 +161,20 @@ const Detail = () => {
             <>
               <button
                 type="button"
-                className="p-1 border-2 border-green-500 hover:bg-green-500 hover:text-white rounded text-green-500 text-2xl"
+                className="p-1 border-2 border-green-500 hover:bg-green-500 hover:text-white rounded text-green-500 text-xs sm:text-base"
                 onClick={checkout}
               >
                 Checkout
               </button>
               <button
-                className="p-1 ml-2 border-2 border-yellow-500 hover:bg-yellow-500 hover:text-white text-yellow-500 rounded text-2xl"
+                className="p-1 ml-2 border-2 border-yellow-500 hover:bg-yellow-500 hover:text-white text-yellow-500 rounded text-xs sm:text-base"
                 type="button"
                 onClick={clearEntry}
               >
                 Clear Entry
               </button>
               <button
-                className="p-1 ml-2 border-2 border-red-500 hover:bg-red-500 hover:text-white text-red-500 rounded text-2xl"
+                className="p-1 ml-2 border-2 border-red-500 hover:bg-red-500 hover:text-white text-red-500 rounded text-xs sm:text-base"
                 type="button"
                 onClick={cancelAll}
               >
@@ -181,7 +185,7 @@ const Detail = () => {
         </div>
         <Link
           to="/daily-sales"
-          className="inline-block mt-2 p-1 border-2 border-blue-500 hover:bg-blue-500 hover:text-white rounded text-blue-500 text-2xl"
+          className="inline-block mt-2 p-1 border-2 border-blue-500 hover:bg-blue-500 hover:text-white rounded text-blue-500 text-xs sm:text-base"
         >
           Daily Sales
         </Link>
