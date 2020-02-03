@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import { ItemContext } from '../store/ItemContext';
 import useReciept from '../hooks/useReceipt';
-import Modal from './Modal';
 
 const Detail = () => {
-  const { item, addDaily } = useReciept();
+  const { item } = useReciept();
   const { state, dispatch } = useContext(ItemContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [productDetail, setProductDetail] = useState([]);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const { cart } = state;
@@ -20,7 +18,7 @@ const Detail = () => {
         }
         return acc + curr['total-price'];
       }, 0);
-      setTotalPrice(parseFloat(sum).toFixed(2));
+      setTotalPrice(Math.floor(sum));
       setProductDetail(cart);
     }
   }, [state]);
@@ -30,7 +28,7 @@ const Detail = () => {
     const multiply = cart.quantity + 1;
     const total = {
       ...cart,
-      'total-price': parseFloat(multiply * base.price),
+      'total-price': Math.floor(multiply * base.price),
       quantity: multiply,
     };
     dispatch({ type: 'ADD_QTY', payload: total });
@@ -44,7 +42,7 @@ const Detail = () => {
     const minus = cart.quantity - 1;
     const total = {
       ...cart,
-      'total-price': parseFloat(cart['total-price'] - base.price),
+      'total-price': Math.floor(cart['total-price'] - base.price),
       quantity: minus,
     };
     dispatch({ type: 'SUBTARCT_QTY', payload: total });
@@ -52,23 +50,6 @@ const Detail = () => {
 
   const clearEntry = () => {
     dispatch({ type: 'CLEAR_ENTRY' });
-  };
-
-  const checkout = () => {
-    setOpen(prevState => {
-      return !prevState;
-    });
-    const { cart } = state;
-    const date = new Date();
-    const input = {
-      cart: [...cart],
-      date,
-      total: totalPrice,
-    };
-    addDaily(input);
-    dispatch({ type: 'CLEAR_ALL' });
-    setProductDetail([]);
-    setTotalPrice(0);
   };
 
   const cancelAll = () => {
@@ -79,7 +60,6 @@ const Detail = () => {
 
   return (
     <div className="flex flex-col h-full bg-blue-100 md:w-2/3 sm:w-full">
-      <Modal open={open} setOpen={setOpen} />
       <div className="h-full p-8">
         <div className="flex justify-between text-xl font-hairline">
           <h3>Reciept</h3>
@@ -159,20 +139,13 @@ const Detail = () => {
             </>
           ) : (
             <>
-              <button
-                type="button"
-                className="p-1 text-xs text-green-500 border-2 border-green-500 rounded hover:bg-green-500 hover:text-white sm:text-base"
-                onClick={checkout}
-              >
-                Checkout
-              </button>
               <Link
                 to="/checkout"
                 state={{
                   cart: state.cart,
                   totalPrice,
                 }}
-                className="p-1 ml-2 text-xs text-green-500 border-2 border-green-500 rounded outline-none hover:bg-green-500 hover:text-white sm:text-base"
+                className="p-1 text-xs text-green-500 border-2 border-green-500 rounded outline-none hover:bg-green-500 hover:text-white sm:text-base"
               >
                 Checkout
               </Link>
