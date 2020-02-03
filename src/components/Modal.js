@@ -7,16 +7,41 @@ const Modal = ({ open, setOpen }) => {
   if (open) {
     return (
       <div className="modal">
-        <div className="modal-content bg-green-400 p-5 text-white text-xl font-semibold rounded">
-          Success
-          <button type="button" className="close ml-5" onClick={handleOpen}>
-            &times;
-          </button>
+        <div className="w-64 p-5 bg-white rounded modal-content">
+          <div className="text-xl">Confirm</div>
+          <div className="flex justify-between">
+            <div>Total</div>
+            <div>2131232</div>
+          </div>
+          <div className="flex justify-between">
+            <div>Paid</div>
+            <div>3132</div>
+          </div>
+          <div className="flex justify-between">
+            <div>Kembalian</div>
+            <div>213123</div>
+          </div>
+          <div className="flex justify-around mt-5">
+            <button
+              type="button"
+              className="p-3 bg-red-400 rounded close"
+              onClick={handleOpen}
+            >
+              Cancel
+            </button>
+            <button
+              type="button3"
+              className="p-3 bg-green-400 rounded close"
+              onClick={handleOpen}
+            >
+              Proccess
+            </button>
+          </div>
         </div>
       </div>
     );
   }
-  return <div className="hidden fixed z-10 left-0 top-0 w-full h-full" />;
+  return <div className="hidden" />;
 };
 
 export default Modal;

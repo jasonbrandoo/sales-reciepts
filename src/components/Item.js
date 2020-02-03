@@ -33,13 +33,13 @@ const Item = () => {
   };
 
   return (
-    <div className="md:w-1/3 sm:w-full h-full bg-blue-700 flex flex-col">
-      <div className="flex flex-row flex-wrap justify-around overflow-y-auto p-5 h-0 flex-auto">
+    <div className="flex flex-col h-full bg-blue-700 md:w-1/3 sm:w-full">
+      <div className="flex flex-row flex-wrap justify-around flex-auto h-0 p-5 overflow-y-auto">
         {product.map(items => (
           <button
             key={items.title}
             type="button"
-            className="pt-8 px-6 m-2 w-32 h-32 border-2 border-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black rounded-lg text-gray-100 text-left text-xs font-semibold"
+            className="w-32 h-32 px-6 pt-8 m-2 text-xs font-semibold text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
             onClick={() => handleProduct(items)}
           >
             {items.title}
@@ -47,9 +47,9 @@ const Item = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-row items-center bg-blue-900 overflow-x-scroll overflow-y-hidden w-full h-12 text-xs sm:text-base">
+      <div className="flex flex-row items-center w-full h-12 overflow-x-scroll overflow-y-hidden text-xs bg-blue-900 sm:text-base">
         <button
-          className="flex-none hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black text-white w-32 h-full font-semibold"
+          className="flex-none w-32 h-full font-semibold text-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
           type="button"
           onClick={handleAllType}
         >
