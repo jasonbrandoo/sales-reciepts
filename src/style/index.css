@@ -4,6 +4,10 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
+.height-full {
+  height: calc(100vh - 46px);
+}
+
 .modal {
   visibility: visible;
   position: fixed;

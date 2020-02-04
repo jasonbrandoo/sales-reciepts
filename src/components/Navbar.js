@@ -9,20 +9,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-blue-900 p-2">
+    <nav className="flex flex-wrap items-center justify-between p-2 bg-blue-900">
       <div className="text-white">
-        <Link to="/" className="font-semibold text-xl tracking-tight">
+        <Link to="/" className="text-xl font-semibold tracking-tight">
           Reciept App
         </Link>
       </div>
       <div className="block lg:hidden">
         <button
-          className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+          className="flex items-center px-3 py-2 text-teal-200 border border-teal-400 rounded hover:text-white hover:border-white"
           type="button"
           onClick={toggle}
         >
           <svg
-            className="fill-current h-3 w-3"
+            className="w-3 h-3 fill-current"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >

@@ -33,7 +33,7 @@ const Item = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-blue-700 md:w-1/3 sm:w-full">
+    <div className="flex flex-col bg-blue-700 height-full md:w-1/3 sm:w-full">
       <div className="flex flex-row flex-wrap justify-around flex-auto h-0 p-5 overflow-y-auto">
         {product.map(items => (
           <button

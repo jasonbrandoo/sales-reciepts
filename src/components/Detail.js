@@ -59,8 +59,8 @@ const Detail = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-blue-100 md:w-2/3 sm:w-full">
-      <div className="h-full p-8">
+    <div className="w-full h-full bg-blue-100 sm:w-2/3">
+      <div className="p-8 ">
         <div className="flex justify-between text-xl font-hairline">
           <h3>Reciept</h3>
           <h3>{new Date().toLocaleDateString('id')}</h3>
