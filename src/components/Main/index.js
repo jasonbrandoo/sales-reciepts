@@ -1,12 +1,12 @@
 import React from 'react';
-import Item from './Item';
-import Detail from './Detail';
+import MainItem from './MainItem';
+import MainDetail from './MainDetail';
 
 const Main = () => {
   return (
     <div className="sm:flex justify-center h-full">
-      <Item />
-      <Detail />
+      <MainItem />
+      <MainDetail />
     </div>
   );
 };

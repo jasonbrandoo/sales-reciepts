@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ItemContext } from '../store/ItemContext';
-import useReciept from '../hooks/useReceipt';
-import { groupBy, filterBy } from '../utils';
+import { ItemContext } from '../../store/ItemContext';
+import useReciept from '../../hooks/useReceipt';
+import { groupBy, filterBy } from '../../utils';
 
 const Item = () => {
   const { item } = useReciept();

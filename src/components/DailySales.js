@@ -28,7 +28,7 @@ const DailySales = () => {
         const S = dailyObj.date.getSeconds();
         return (
           <div className="pb-5" key={dailyObj.date}>
-            <div className="flex justify-between items-center mb-3">
+            <div className="flex items-center justify-between mb-3">
               <div className="text-sm font-hairline">No. {index + 1}</div>
               <div className="text-sm font-hairline">
                 {d}/{m}/{y} - {H}:{M}:{S}
@@ -37,7 +37,7 @@ const DailySales = () => {
             <table className="w-full border border-black">
               <thead>
                 <tr className="border border-black">
-                  <th className="text-left w-1/2 pl-5">Name</th>
+                  <th className="w-1/2 pl-5 text-left">Name</th>
                   <th>Qty</th>
                   <th>Price</th>
                   <th>Total</th>
@@ -62,8 +62,20 @@ const DailySales = () => {
                   <td />
                   <td />
                   <td />
-                  <td className="text-center font-semibold">
-                    {dailyObj.total}
+                  <td className="font-semibold text-center">{dailyObj.bill}</td>
+                </tr>
+                <tr className="border border-black">
+                  <td />
+                  <td />
+                  <td />
+                  <td className="font-semibold text-center">{dailyObj.paid}</td>
+                </tr>
+                <tr className="border border-black">
+                  <td />
+                  <td />
+                  <td />
+                  <td className="font-semibold text-center">
+                    {dailyObj.change}
                   </td>
                 </tr>
               </tfoot>

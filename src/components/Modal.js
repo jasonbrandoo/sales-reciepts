@@ -21,15 +21,15 @@ const Modal = ({ open, setOpen, bill, paid, change, handleConfirm }) => {
           <div className="text-xl">Confirm</div>
           <div className="flex justify-between">
             <div>Bill</div>
-            <div>{bill}</div>
+            <div>$ {bill}</div>
           </div>
           <div className="flex justify-between">
             <div>Paid</div>
-            <div>{paid}</div>
+            <div>$ {paid}</div>
           </div>
           <div className="flex justify-between">
             <div>Change</div>
-            <div>{change}</div>
+            <div>$ {change}</div>
           </div>
           <div className="flex justify-around mt-5">
             <button
