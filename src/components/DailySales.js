@@ -15,7 +15,7 @@ const DailySales = () => {
   };
 
   return (
-    <div className="w-9/12 mx-auto mb-5">
+    <div className="w-9/12 h-full mx-auto ">
       <h1 className="text-2xl text-center">Daily Sales</h1>
       {sales.map((dailyObj, index) => {
         const d = dailyObj.date.getDate();
@@ -27,8 +27,8 @@ const DailySales = () => {
         const M = dailyObj.date.getMinutes();
         const S = dailyObj.date.getSeconds();
         return (
-          <div className="pb-5" key={dailyObj.date}>
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-8" key={dailyObj.date}>
+            <div className="flex items-center justify-between ">
               <div className="text-sm font-hairline">No. {index + 1}</div>
               <div className="text-sm font-hairline">
                 {d}/{m}/{y} - {H}:{M}:{S}
@@ -59,19 +59,13 @@ const DailySales = () => {
               </tbody>
               <tfoot>
                 <tr className="border border-black">
-                  <td />
-                  <td />
-                  <td />
-                  <td className="font-semibold text-center">{dailyObj.bill}</td>
-                </tr>
-                <tr className="border border-black">
-                  <td />
+                  <td className="pl-12 font-semibold">Paid</td>
                   <td />
                   <td />
                   <td className="font-semibold text-center">{dailyObj.paid}</td>
                 </tr>
                 <tr className="border border-black">
-                  <td />
+                  <td className="pl-12 font-semibold">Change</td>
                   <td />
                   <td />
                   <td className="font-semibold text-center">
@@ -84,7 +78,7 @@ const DailySales = () => {
         );
       })}
       {sales.length === 0 ? (
-        <h1 className="text-center mt-10">No Records</h1>
+        <h1 className="text-center">No Records</h1>
       ) : (
         <button
           type="button"

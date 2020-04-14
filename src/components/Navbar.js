@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-wrap items-center justify-between p-2 bg-blue-900">
+    <nav className="flex flex-wrap items-center justify-between h-12 bg-purple-900">
       <div className="text-white">
         <Link to="/" className="text-xl font-semibold tracking-tight">
           Reciept App
@@ -34,14 +34,14 @@ const Navbar = () => {
       <div
         className={
           open
-            ? 'w-full flex-grow lg:flex lg:items-center lg:w-auto block'
-            : 'w-full flex-grow lg:flex lg:items-center lg:w-auto hidden'
+            ? 'w-full lg:flex lg:items-center lg:w-auto block'
+            : 'w-full lg:flex lg:items-center lg:w-auto hidden'
         }
       >
-        <div className="text-sm lg:ml-auto">
+        <div className="lg:ml-auto">
           <a
             href="https://github.com/jasonbrandoo/receipt"
-            className="text-sm text-white mt-4 lg:mt-0 lg:p-4"
+            className=" text-white lg:mt-0"
           >
             Github
           </a>

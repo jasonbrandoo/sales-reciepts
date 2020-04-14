@@ -72,7 +72,7 @@ const CheckoutBill = ({ state, navigate }) => {
         change={Number(change)}
         handleConfirm={handleConfirm}
       />
-      <div className="flex flex-col items-center justify-center w-full h-screen bg-gray-200 sm:h-full sm:w-1/3">
+      <div className="flex flex-col items-center justify-center w-full bg-gray-200 h-full sm:w-1/3">
         <div className="mb-5 text-2xl border-b border-black">Checkout</div>
         <div className="w-9/12 text-xl">
           <div className="flex justify-between">

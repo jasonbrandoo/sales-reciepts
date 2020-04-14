@@ -4,7 +4,10 @@ import MainDetail from './MainDetail';
 
 const Main = () => {
   return (
-    <div className="sm:flex justify-center h-full">
+    <div
+      className="md:flex md:flex-row md:justify-center "
+      style={{ height: 'calc(100vh - 3rem)' }}
+    >
       <MainItem />
       <MainDetail />
     </div>

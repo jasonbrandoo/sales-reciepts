@@ -33,23 +33,30 @@ const Item = () => {
   };
 
   return (
-    <div className="flex flex-col bg-blue-700 height-full md:w-1/3 sm:w-full">
-      <div className="flex flex-row flex-wrap justify-around flex-auto h-0 p-5 overflow-y-auto">
-        {product.map(items => (
-          <button
-            key={items.title}
-            type="button"
-            className="w-32 h-32 px-6 pt-8 m-2 text-xs font-semibold text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
-            onClick={() => handleProduct(items)}
-          >
-            {items.title}
-            <span className="block">${items.price}</span>
-          </button>
-        ))}
+    <div className="flex flex-col bg-purple-700 sm:w-full md:w-1/3">
+      <div
+        className="flex flex-row flex-wrap justify-around mx-1 my-2 overflow-y-auto "
+        style={{ height: 'calc(100vh - 3rem)' }}
+      >
+        {product.length === 0 ? (
+          <div>Loading</div>
+        ) : (
+          product.map(items => (
+            <button
+              key={items.title}
+              type="button"
+              className="w-32 h-32 px-6 pt-8 my-1 text-xs text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+              onClick={() => handleProduct(items)}
+            >
+              {items.title}
+              <span className="block">${items.price}</span>
+            </button>
+          ))
+        )}
       </div>
-      <div className="flex flex-row items-center w-full h-12 overflow-x-scroll overflow-y-hidden text-xs bg-blue-900 sm:text-base">
+      <div className="flex flex-row flex-shrink-0 w-full h-12 overflow-x-scroll overflow-y-hidden text-xs bg-purple-900 ">
         <button
-          className="flex-none w-32 h-full font-semibold text-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+          className="flex-none w-32 text-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
           type="button"
           onClick={handleAllType}
         >
@@ -57,7 +64,7 @@ const Item = () => {
         </button>
         {type.map(types => (
           <button
-            className="flex-none hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black text-white w-32 h-full font-semibold uppercase"
+            className="flex-none w-32 text-white uppercase hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
             type="button"
             onClick={() => handleType(types)}
             key={types}

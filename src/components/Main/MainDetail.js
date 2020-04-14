@@ -59,20 +59,23 @@ const Detail = () => {
   };
 
   return (
-    <div className="w-full h-full bg-blue-100 sm:w-2/3">
+    <div className="w-full h-screen bg-gray-200 md:h-full">
       <div className="p-8 ">
-        <div className="flex justify-between text-xl font-hairline">
+        <div className="flex justify-between font-hairline">
           <h3>Reciept</h3>
           <h3>{new Date().toLocaleDateString('id')}</h3>
         </div>
-        <div className="flex w-full text-xs font-semibold border-2 border-black sm:text-lg">
+        <div className="flex w-full border border-black">
           <h3 className="w-12 text-center">No</h3>
           <h3 className="w-1/5 text-left sm:w-1/2">Name</h3>
           <h3 className="w-1/5 text-center">Quantity</h3>
           <h3 className="w-1/5 text-center">Price</h3>
           <h3 className="w-1/5 text-center">Total</h3>
         </div>
-        <div className="flex flex-col w-full h-64 overflow-y-auto text-xs font-hairline border-l-2 border-r-2 border-black sm:text-base">
+        <div
+          className="flex flex-col w-full overflow-y-auto text-xs font-hairline border-l border-r border-black sm:text-base"
+          style={{ height: '22rem' }}
+        >
           {state.cart.map((data, index) => (
             <div className="flex flex-row my-1" key={data.title}>
               <div className="w-12 text-center">{index + 1}.</div>
@@ -101,7 +104,7 @@ const Detail = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-row text-center border-2 border-black ">
+        <div className="flex flex-row text-center border border-black ">
           <div className="w-10" />
           <div className="w-1/5 sm:w-1/2" />
           <div className="w-1/5" />

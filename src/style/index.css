@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .height-full {
-  height: calc(100vh - 46px);
+  height: calc(100vh - 4rem);
 }
 
 .modal {

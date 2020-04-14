@@ -7,9 +7,9 @@ const propTypes = {
 
 const CheckoutDetail = ({ state }) => {
   return (
-    <div className="w-full h-screen p-8 bg-gray-400 sm:h-full sm:w-2/3">
-      <div className="text-2xl">Details</div>
-      <div className="flex flex-col">
+    <div className="w-full h-full bg-gray-400 sm:w-2/3">
+      <div className="p-4 text-2xl">Detail</div>
+      <div className="flex flex-col px-4">
         <div className="flex text-xs font-bold text-left break-words sm:text-sm">
           <div className="w-8">No</div>
           <div className="w-1/5">Name</div>
@@ -21,7 +21,7 @@ const CheckoutDetail = ({ state }) => {
         </div>
       </div>
       {state.cart.map((item, index) => (
-        <div key={item.title} className="flex flex-col">
+        <div key={item.title} className="flex flex-col px-4">
           <div className="flex text-xs text-left sm:text-sm">
             <div className="w-8 ">{index + 1}.</div>
             <div className="w-1/5">{item.title}</div>
