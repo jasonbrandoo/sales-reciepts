@@ -33,10 +33,10 @@ const Item = () => {
   };
 
   return (
-    <div className="flex flex-col bg-purple-700 sm:w-full md:w-1/3">
+    <div className="flex flex-col bg-gray-800 sm:w-full md:w-1/2">
       <div
-        className="flex flex-row flex-wrap justify-around mx-1 my-2 overflow-y-auto "
-        style={{ height: 'calc(100vh - 3rem)' }}
+        className="p-2 mx-1 my-2 overflow-y-auto grid-container"
+        style={{ height: 'calc(100vh - 44px)' }}
       >
         {product.length === 0 ? (
           <div>Loading</div>
@@ -45,7 +45,7 @@ const Item = () => {
             <button
               key={items.title}
               type="button"
-              className="w-32 h-32 px-6 pt-8 my-1 text-xs text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+              className="px-6 pt-8 text-xs text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
               onClick={() => handleProduct(items)}
             >
               {items.title}
@@ -54,9 +54,9 @@ const Item = () => {
           ))
         )}
       </div>
-      <div className="flex flex-row flex-shrink-0 w-full h-12 overflow-x-scroll overflow-y-hidden text-xs bg-purple-900 ">
+      <div className="flex flex-row w-full overflow-x-scroll overflow-y-hidden bg-gray-900">
         <button
-          className="flex-none w-32 text-white hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+          className="flex-none w-32 py-1 text-gray-500 hover:bg-white hover:text-black focus:bg-white focus:text-black"
           type="button"
           onClick={handleAllType}
         >
@@ -64,7 +64,7 @@ const Item = () => {
         </button>
         {type.map(types => (
           <button
-            className="flex-none w-32 text-white uppercase hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+            className="flex-none w-32 py-1 text-gray-500 hover:bg-white hover:text-black focus:bg-white focus:text-black uppercase"
             type="button"
             onClick={() => handleType(types)}
             key={types}

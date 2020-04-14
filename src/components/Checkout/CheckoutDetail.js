@@ -7,7 +7,7 @@ const propTypes = {
 
 const CheckoutDetail = ({ state }) => {
   return (
-    <div className="w-full h-full bg-gray-400 sm:w-2/3">
+    <div className="w-full h-full overflow-y-auto bg-gray-400 sm:w-2/3">
       <div className="p-4 text-2xl">Detail</div>
       <div className="flex flex-col px-4">
         <div className="flex text-xs font-bold text-left break-words sm:text-sm">

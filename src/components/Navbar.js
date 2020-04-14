@@ -9,45 +9,46 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-wrap items-center justify-between h-12 bg-purple-900">
-      <div className="text-white">
-        <Link to="/" className="text-xl font-semibold tracking-tight">
-          Reciept App
+    <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-1">
+      <div className="flex items-center justify-between px-4 py-1 sm:p-0">
+        <Link className="text-2xl text-gray-500 hover:text-white" to="/">
+          RecieptApp
         </Link>
-      </div>
-      <div className="block lg:hidden">
-        <button
-          className="flex items-center px-3 py-2 text-teal-200 border border-teal-400 rounded hover:text-white hover:border-white"
-          type="button"
-          onClick={toggle}
-        >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="sm:hidden">
+          <button
+            type="button"
+            onClick={toggle}
+            className="block text-gray-500 hover:text-white focus:text-white"
           >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
+            <svg
+              className="w-5 h-5 fill-current"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
       </div>
       <div
         className={
-          open
-            ? 'w-full lg:flex lg:items-center lg:w-auto block'
-            : 'w-full lg:flex lg:items-center lg:w-auto hidden'
+          open ? 'block px-2 pt-1 pb-4 sm:flex sm:p-0' : 'hidden sm:flex sm:p-0'
         }
       >
-        <div className="lg:ml-auto">
-          <a
-            href="https://github.com/jasonbrandoo/receipt"
-            className=" text-white lg:mt-0"
-          >
-            Github
-          </a>
-        </div>
+        <Link
+          to="/"
+          className="block px-2 py-1 font-semibold text-white rounded hover:bg-gray-800"
+        >
+          Settings
+        </Link>
+        <Link
+          to="/"
+          className="block px-2 py-1 my-1 font-semibold text-white rounded hover:bg-gray-800 sm:m-0"
+        >
+          Sign Out
+        </Link>
       </div>
-    </nav>
+    </header>
   );
 };
 

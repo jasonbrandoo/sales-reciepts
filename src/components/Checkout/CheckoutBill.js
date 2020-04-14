@@ -72,27 +72,29 @@ const CheckoutBill = ({ state, navigate }) => {
         change={Number(change)}
         handleConfirm={handleConfirm}
       />
-      <div className="flex flex-col items-center justify-center w-full bg-gray-200 h-full sm:w-1/3">
-        <div className="mb-5 text-2xl border-b border-black">Checkout</div>
+      <div className="flex flex-col items-center justify-center w-full h-full bg-gray-800 sm:w-1/3">
+        <div className="mb-5 text-2xl border-b border-black text-white">
+          Checkout
+        </div>
         <div className="w-9/12 text-xl">
-          <div className="flex justify-between">
+          <div className="flex justify-between text-white">
             <div>Bill</div>
             <div>$ {state.totalPrice}</div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between text-white">
             <div>Paid</div>
             <div>$ {paid}</div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between text-white">
             <div>Change</div>
             <div>$ {change}</div>
           </div>
         </div>
-        <div className="mt-5 text-xl font-hairline">
+        <div className="mt-5 border-2 rounded">
           <div className="flex">
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="7"
               onClick={handlePaid}
             >
@@ -100,7 +102,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="8"
               onClick={handlePaid}
             >
@@ -108,7 +110,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="9"
               onClick={handlePaid}
             >
@@ -118,7 +120,7 @@ const CheckoutBill = ({ state, navigate }) => {
           <div className="flex">
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="4"
               onClick={handlePaid}
             >
@@ -126,7 +128,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="5"
               onClick={handlePaid}
             >
@@ -134,7 +136,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="6"
               onClick={handlePaid}
             >
@@ -144,7 +146,7 @@ const CheckoutBill = ({ state, navigate }) => {
           <div className="flex">
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="1"
               onClick={handlePaid}
             >
@@ -152,7 +154,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="2"
               onClick={handlePaid}
             >
@@ -160,7 +162,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="3"
               onClick={handlePaid}
             >
@@ -170,7 +172,7 @@ const CheckoutBill = ({ state, navigate }) => {
           <div className="flex">
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="0"
               onClick={handlePaid}
             >
@@ -178,7 +180,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-gray-400 border hover:bg-gray-600 focus:outline-none"
+              className="w-20 h-16 bg-gray-500 border hover:bg-white focus:outline-none"
               value="00"
               onClick={handlePaid}
             >
@@ -186,7 +188,7 @@ const CheckoutBill = ({ state, navigate }) => {
             </button>
             <button
               type="button"
-              className="w-20 h-16 bg-red-400 border hover:bg-red-600 focus:outline-none"
+              className="w-20 h-16 bg-red-500 border hover:bg-red-400 focus:outline-none"
               onClick={clearOne}
             >
               C
@@ -195,7 +197,7 @@ const CheckoutBill = ({ state, navigate }) => {
           {paid === '0' ? (
             <button
               type="button"
-              className="w-full p-2 mt-2 text-white bg-green-600"
+              className="w-full p-2 text-white bg-green-800 rounded"
               disabled
             >
               Submit
@@ -203,7 +205,7 @@ const CheckoutBill = ({ state, navigate }) => {
           ) : (
             <button
               type="button"
-              className="w-full p-2 mt-2 text-white bg-green-400 hover:bg-green-600"
+              className="w-full p-2 text-white bg-green-500 rounded hover:bg-green-600"
               onClick={handleSubmit}
             >
               Submit

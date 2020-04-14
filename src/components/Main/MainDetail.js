@@ -59,7 +59,7 @@ const Detail = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-gray-200 md:h-full">
+    <div className="w-1/2 h-screen bg-gray-200 md:h-full">
       <div className="p-8 ">
         <div className="flex justify-between font-hairline">
           <h3>Reciept</h3>

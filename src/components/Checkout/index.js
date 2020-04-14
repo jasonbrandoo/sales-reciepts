@@ -16,7 +16,10 @@ const propTypes = {
 const Checkout = ({ location, navigate }) => {
   const { state } = location;
   return (
-    <div className="h-full bg-gray-100 sm:flex sm:flex-row">
+    <div
+      className="h-full bg-gray-100 sm:flex sm:flex-row min-h-full"
+      style={{ height: 'calc(100vh - 44px)' }}
+    >
       <CheckoutBill state={state} navigate={navigate} />
       <CheckoutDetail state={state} />
     </div>
