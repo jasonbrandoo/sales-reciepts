@@ -13,4 +13,8 @@ const filterBy = (item, selected) => {
   return item.filter(i => i.type === selected);
 };
 
-export { groupBy, filterBy };
+const sum = qtys => {
+  return qtys.reduce((acc, curr) => acc + curr, 0);
+};
+
+export { groupBy, filterBy, sum };

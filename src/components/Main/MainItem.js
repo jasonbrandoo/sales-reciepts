@@ -45,7 +45,7 @@ const Item = () => {
             <button
               key={items.title}
               type="button"
-              className="px-6 pt-8 text-xs text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
+              className="px-6 py-4 text-xs text-left text-gray-100 border-2 border-white rounded-lg hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black"
               onClick={() => handleProduct(items)}
             >
               {items.title}
